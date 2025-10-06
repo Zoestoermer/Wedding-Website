@@ -56,10 +56,10 @@ body {
 	-webkit-text-size-adjust: none;
 }
 
-mark {
+/*mark {
 	background-color: transparent;
 	color: inherit;
-}
+}*/
 
 input::-moz-focus-inner {
 	border: 0;
@@ -168,8 +168,8 @@ html, body{
 	}
 
 	body {
-		background-color: transparent;
-		background-image: linear-gradient(to top, rgba(255, 254, 239, 0.877), rgba(255, 254, 239, 0.877)), url("../../images/bg.jpg");
+		background-color: rgb(247, 241, 231);
+		/*background-image: linear-gradient(to top, rgba(255, 254, 239, 0.877), rgba(255, 254, 239, 0.877)), url("../../images/bg.jpg");*/
 		background-size: auto, cover;
 		background-attachment: fixed, fixed;
 		background-position: center, center;
@@ -294,13 +294,13 @@ html, body{
 				width: 2em;
 			}
 
-			a.special:not(.button):hover:before {
+			/*a.special:not(.button):hover:before {
 				background-color: rgba(255, 255, 255, 0.025);
 			}
 
 			a.special:not(.button):active:before {
 				background-color: rgba(255, 255, 255, 0.075);
-			}
+			}*/
 
 	strong, b {
 		color: #ffffff;
@@ -2282,9 +2282,9 @@ html, body{
 			background: rgba(255, 254, 239, 0.877);
 		}
 
-		select:focus::-ms-value {
+		/*select:focus::-ms-value {
 			background-color: transparent;
-		}
+		}*/
 
 		select::-ms-expand {
 			display: none;
@@ -2778,13 +2778,13 @@ html, body{
 				text-align: center;
 			}
 
-				ul.pagination li > .page:hover {
+				/*ul.pagination li > .page:hover {
 					background-color: rgba(255, 255, 255, 0.025);
 				}
 
 				ul.pagination li > .page.active {
 					background-color: #4c5c96;
-				}
+				}*/
 
 			ul.pagination li:first-child {
 				padding-right: 0.75em;
@@ -2836,9 +2836,9 @@ html, body{
 			border-right: 0;
 		}
 
-			table tbody tr:nth-child(2n + 1) {
+			/*table tbody tr:nth-child(2n + 1) {
 				background-color: rgba(255, 255, 255, 0.025);
-			}
+			}*/
 
 		table td {
 			padding: 0.75em 0.75em;
@@ -3042,7 +3042,7 @@ html, body{
 
 		.features article {
 			padding: 1.75em 1.75em 0.1em 1.75em ;
-			background-color: #353849;
+			/*background-color: #353849;*/
 			border-radius: 5px;
 			margin: 1.5em 3em 1.5em 0;
 			width: calc(50% - 1.5em);
@@ -3188,9 +3188,9 @@ html, body{
 			font-weight: bold;
 		}	
 
-		#header.alt {
+		/*#header.alt {
 			background-color: transparent;
-		}
+		}*/
 
 			#header.alt h1 {
 				opacity: 0;
@@ -3536,7 +3536,7 @@ html, body{
 /* Wrapper */
 
 	#wrapper {	
-    background-color: #2e3141;
+    background-color: rgb(247, 241, 231);
     position: relative;
 	}
 
@@ -3569,8 +3569,8 @@ html, body{
 
 		#wrapper > header {
 			padding: 9em 0 6.25em 0 ;
-			background-color: #2e3141;
-			background-image: linear-gradient(to top, rgba(255, 254, 239, 0.877), rgba(255, 254, 239, 0.877)), url("../../images/bg.jpg");
+			/*background-color: #2e3141;
+			background-image: linear-gradient(to top, rgba(255, 254, 239, 0.877), rgba(255, 254, 239, 0.877)), url("../../images/bg.jpg");*/
 			background-size: auto, cover;
 			background-position: center, 0% 30%;
 			margin-bottom: -6.5em;
@@ -3612,7 +3612,7 @@ html, body{
 	}
 
 	.wrapper {
-		background-color: #2e3141;
+		/*background-color: #2e3141;*/
 		margin: 6.5em 0;
 		position: relative;
 	}
@@ -3697,7 +3697,7 @@ html, body{
 			.wrapper.striped::before {
 				content: "";
 				position: absolute;
-				top: -10.5em;
+				top: -11em;
 				left: 0;
 				width: 100%;
 				height: 12em; /* wave height */
@@ -3793,7 +3793,7 @@ html, body{
 			background-color: #798db9; 
 			display: flex;             
 			flex-direction: row !important; /*stack items*/
-			padding: 5em 0 3em 0;
+			padding: 5em 0 4em 0;
 		}
 
 			.wrapper.solid h2{
@@ -3819,7 +3819,6 @@ html, body{
 			.wrapper.solid > div {
 				flex: 1 !important; /* let them share the row space */
 			}
-
 			
 		@media screen and (max-width: 980px) {
 
