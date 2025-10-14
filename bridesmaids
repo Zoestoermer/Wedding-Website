@@ -51,65 +51,84 @@
 					
 						<div class="wrapper solid">
 							<div class="content">
-								<div class="inner" style="text-align: center;">
-									<h2>Meet the ladies</h2> 
-									<div style='float:left; width:40%; margin-left:30px'>
-										<img src="images/selah.jpg" alt="Women" style="z-index: 2000; border-radius: 50%; padding: 0">
-										<h4>Selah</h4>
-									
-										<img src="images/megan.JPG" alt="Women" style="z-index: 2000; border-radius: 50%; padding: 0">
-										<h4>Megen</h4>
-
-										<img src="images/ericka.png" alt="Women" style="z-index: 2000; border-radius: 50%; padding: 0">
-										<h4>Ericka</h4>
-
-									</div>
-									<div style='float:left; width:40%; margin-left:30px'>
-										<img src="images/kady.JPG" alt="Women" style="z-index: 2000; border-radius: 50%; padding: 0">
-										<h4>Kady</h4>
-									
-										<img src="images/skylee.jpg" alt="Women" style="z-index: 2000; border-radius: 50%; padding: 0">
-										<h4>Skylee</h4>
-
-										<img src="images/grac.jpg" alt="Women" style="z-index: 2000; border-radius: 50%; padding: 0">
-										<h4>Gracie</h4>
-									</div>
-								</div>
-							</div>
-						</div>
-						
-						
-						<div class="wrapper striped">
-							<div class="content">
 								<div class="inner">
 									<h2>Schedule</h2>
 									<hr>
 									<h4>The night before</h4>
 									<h4>July 17<sup>th</sup>, 2026</h4><!--fix padding-->
 									<p>We will be hosting a welcome party the night before. Consisting of a quick rehearsal, dinner and a movie.</p>
-									<p>This event will not be held until later in the day. This event is of course not required but we would love your attendance.</p>
+									<p>This event will not be held until later in the day. This event is of course is not required but we would love your attendance.</p>
 									<hr>
 									<h4>Day of</h4>
 									<h4>July 18<sup>th</sup>, 2026</h4><!--fix padding-->
 									<p>We will be having a wedding this day. Don't ask me details beyond that, because I have not thought that through.</p>
-									<p>We will get ready. Take some pictures. Have a ceremony. Have a rehearsal dinner.</p>
+									<p>We will get ready. Take some pictures. Have a ceremony. Have a reception dinner.</p>
 									<p>This event would be required.</p>
 									<hr>
 									<h4>After</h4>
 									<h4>July 19<sup>th</sup> and beyond</h4><!--fix padding-->
-									<p>We will be having a Yosemite day. I'm thinking hiking. I'm thinking sight see. I'm thinking horseback riding. </p>
-									<p>Of course none of this is required, I understand that people have jobs. We do highly suggest that if you have extra time to experience the beauty of Yosemite.</p>
+									<p>We will be having a Yosemite day. I'm thinking hiking. I'm thinking sight seeing. I'm thinking horseback riding. </p>
+									<p>Of course none of this is required, I understand that people have jobs to get back to. We do highly suggest that if you have extra time to experience the beauty of Yosemite.</p>
 								</div>
 							</div>
 						</div>
+						
+						<div class="wrapper striped">
+							<div class="content">
+								<div class="inner" style="text-align: center;">
+									<h2>Meet the ladies</h2> 
+									<div class="bridesmaids">
+										<div class="bridesmaid">
+											<img src="images/selah.jpg" alt="Selah">
+											<h4>Selah</h4>
+										</div>
+
+										<div class="bridesmaid">
+											<img src="images/kady.JPG" alt="Kady">
+											<h4>Kady</h4>
+										</div>
+
+										<div class="bridesmaid">
+											<img src="images/megan.JPG" alt="Megan">
+											<h4>Megen</h4>
+										</div>
+
+										<div class="bridesmaid">
+											<img src="images/skylee.jpg" alt="Skylee">
+											<h4>Skylee</h4>
+										</div>
+
+										<div class="bridesmaid">
+											<img src="images/ericka.png" alt="Ericka">
+											<h4>Ericka</h4>
+										</div>
+
+										<div class="bridesmaid">
+											<img src="images/grac.jpg" alt="Gracie">
+											<h4>Gracie</h4>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+						
+						
 
 						<div class="wrapper light">
 							<div class="content">
 								<div class="inner">
-									<h2 class="major">Details</h2>
-									<a href="https://autocamp.com/location/yosemite/?gad_source=1&gad_campaignid=10687292281" target="_blank"><p>Autocamp Yosemite</p></a> <!--fix text color and hover color-->
-									<p>text</p>
-									
+									<div>
+										<h4>Stay</h4>
+										<p>The wedding will be held at <a href="https://autocamp.com/location/yosemite/?gad_source=1&gad_campaignid=10687292281" target="_blank">Autocamp Yosemite</a>.</br>We will provide a special discounted booking link for the wedding party soon, so please wait to book rooms until then!</p>
+									</div>
+									<div>
+										<h4>Attire</h4>
+										<p>Here is a link to my <a href="https://pin.it/3K6UPEucf" target="_blank" >Pinterest</a> insp page. But also tbd, I havent fully decided yet:/. I'm leaving the dresses up to you guys, as long as it is the same vibe as the inspo and you feel pretty. </p>
+									</div>
+									<div>
+										<h4>Other</h4>
+										<p>IDK what else you want???</p>
+									</div>
 								</div>
 							</div>
 						</div>

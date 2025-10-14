@@ -18,7 +18,7 @@
 	<body class="is-preload">
 
 		<!-- Page Wrapper -->
-			<div id="page-wrapper" style="overflow: hidden; width: 100%; height: 100vh;">
+			<div id="page-wrapper">
 
 				<!-- Header -->
 					<header id="header">
@@ -29,19 +29,29 @@
 							
 							<p class="nav-links">
 								<a href="WIP.html">Home</a> &nbsp;&nbsp;&nbsp;
-								<a href="bridesmaids">Bridesmaids</a> &nbsp;&nbsp;&nbsp;
-								<a href="index.html">Under Construction</a> &nbsp;&nbsp;&nbsp;
-        					</p>				
+								<a href="bridesmaids.html">Travel</a> &nbsp;&nbsp;&nbsp;
+								<a href="index.html">Schedule</a> &nbsp;&nbsp;&nbsp;
+								<a href="index.html">Wedding Party</a> &nbsp;&nbsp;&nbsp;
+								<a href="index.html">FAQs</a> &nbsp;&nbsp;&nbsp;
+								<a href="index.html" class="rsvp-link">RSVP</a>
+
+        					</p>
+
+							<p><a href="rsvp.html" class="rsvp-button">RSVP</a></p>
+							
 						</div>						
 					</header>
-					
+
 						<div class="wrapper solid">
 							<div class="content">
-								<div class="inner" style="text-align: center; padding: 11em 4em 11em 4em;">
-									<div style="padding-bottom: 25px;">
-										<h1>Under Construction</h1>
-									</div>
-									
+								<div>
+									<p style="text-align: center; padding: 2em 2em; color:white;">Your presence is the greatest gift we could ask for, and we truly mean that! 
+									</br>Between the travel expenses, PTO, and three days of your time dedicated to us, we are incredibly grateful and do not expect anything beyond that.</p>
+								</div>
+								<div class="embedSite">
+
+									<embed src="https://www.honeyfund.com/site/stoermer-watson-07-18-2026">
+																		
 								</div>
 							</div>
 						</div>
