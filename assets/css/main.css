@@ -313,6 +313,7 @@ html, body{
 
 	p {
 		margin: 0 0 2em 0;
+		font-size: 1.2em;
 	}
 
 	h1, h2, h3, h4, h5, h6 {
@@ -3673,6 +3674,11 @@ html, body{
 				max-width: 100%;
 				max-height: 100vh;
 				object-fit: contain;
+				transition: transform .2s; /* Animation */
+			}
+
+			.wrapper.striped img:hover{
+				transform: scale(1.08);
 			}
 
 			.wrapper.striped h2{
@@ -3731,6 +3737,21 @@ html, body{
 				z-index: 20;
 				background-origin: border-box;
 				background-clip: content-box;
+			}
+
+			/* On medium screens, push it a bit lower */
+			@media (min-width: 900px) {
+				.wrapper.striped::before {
+					top: -12em;
+					height: 12em;
+				}
+			}
+
+			@media (min-width: 1300px) {
+				.wrapper.striped::before {
+					top: -15em;
+					height: 16em;
+				}
 			}
 
 		.wrapper.light {
@@ -3794,6 +3815,22 @@ html, body{
 				background-clip: content-box;
 			}
 
+			/* On medium screens, push it a bit lower */
+			@media (min-width: 900px) {
+				.wrapper.light:after {
+					bottom: -16em;
+					height: 12em;
+				}
+			}
+
+			/* On large screens, push it even lower */
+			@media (min-width: 1300px) {
+				.wrapper.light:after {
+					bottom: -16em;
+					height: 16em;
+				}
+			}
+
 		.wrapper.solid {
 			background-color: #798db9; 
 			display: flex;             
@@ -3825,6 +3862,7 @@ html, body{
 				flex: 1 !important; /* let them share the row space */
 			}
 			
+
 		@media screen and (max-width: 980px) {
 
 			.wrapper {

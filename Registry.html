@@ -1,0 +1,114 @@
+<!DOCTYPE HTML>
+<!--
+	Solid State by HTML5 UP
+	html5up.net | @ajlkn
+	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
+-->
+<html lang="en">
+	<head>
+		<title>Z+C Wedding</title>
+		<link rel="icon" type="image/png" href="images/Z_C_Favicon.png">
+		<link rel="shortcut icon" href="images/Z_C_Favicon.png" type="image/png">
+		<link rel="apple-touch-icon" href="assets/images/Z_C_Favicon.png">
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+		<link rel="stylesheet" href="assets/css/main.css" />
+		<noscript><link rel="stylesheet" href="assets/css/noscript.css" /></noscript>
+	</head>
+	<body class="is-preload">
+
+		<!-- Page Wrapper -->
+			<div id="page-wrapper">
+
+				<!-- Header -->
+					<header id="header">
+						<div class="header-container">
+							<button class="menu-toggle">☰</button>
+
+							<img src="images/Z_C_Favicon.png" alt="Logo" class="header-logo" />
+							
+							<p class="nav-links">
+								<a href="WIP.html">Home</a> &nbsp;&nbsp;&nbsp;
+								<a href="bridesmaids.html">Travel</a> &nbsp;&nbsp;&nbsp;
+								<a href="index.html">Schedule</a> &nbsp;&nbsp;&nbsp;
+								<a href="index.html">Wedding Party</a> &nbsp;&nbsp;&nbsp;
+								<a href="index.html">FAQs</a> &nbsp;&nbsp;&nbsp;
+								<a href="index.html" class="rsvp-link">RSVP</a>
+
+        					</p>
+
+							<p><a href="rsvp.html" class="rsvp-button">RSVP</a></p>
+							
+						</div>						
+					</header>
+
+						<div class="wrapper solid">
+							<div class="content">
+								<div>
+									<p style="text-align: center; padding: 2em 2em; color:white;">Your presence is the greatest gift we could ask for, and we truly mean that! 
+									</br>Between the travel expenses, PTO, and three days of your time dedicated to us, we are incredibly grateful and do not expect anything beyond that.</p>
+								</div>
+								<div class="embedSite">
+
+									<embed src="https://www.honeyfund.com/site/stoermer-watson-07-18-2026">
+																		
+								</div>
+							</div>
+						</div>
+								
+					</section>
+
+				<!-- Footer -->
+					<section id="footer">
+						<div class="inner">
+							<img src="images/Z_C_Favicon.png" alt="" class="footer-logo"/>
+						</div>
+					</section>
+
+			</div>
+
+		<!-- Scripts -->
+			<script src="assets/js/jquery.min.js"></script>
+			<script src="assets/js/jquery.scrollex.min.js"></script>
+			<script src="assets/js/browser.min.js"></script>
+			<script src="assets/js/breakpoints.min.js"></script>
+			<script src="assets/js/util.js"></script>
+			<script src="assets/js/main.js"></script>
+			<script>
+				document.addEventListener('DOMContentLoaded', function () {
+					const toggle = document.querySelector('.menu-toggle');
+					if (!toggle) return;
+
+					toggle.addEventListener('click', function () {
+						document.body.classList.toggle('nav-open');
+
+						const expanded = toggle.getAttribute('aria-expanded') === 'true';
+						toggle.setAttribute('aria-expanded', String(!expanded));
+					});
+				});
+			</script>
+
+			<script>
+				var countDownDate = new Date("Jul 18, 2026 18:00:00").getTime();
+				// Update the count down every 1 second
+				var x = setInterval(function() {
+				// Get today's date and time
+				var now = new Date().getTime();
+				// Find the distance between now and the count down date
+				var distance = countDownDate - now;
+				// Time calculations for days, hours, and minutes 
+				var days = Math.floor(distance / (1000 * 60 * 60 * 24));
+				var hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+				var minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+				// Display the result in the element with id="demo"
+				document.getElementById("countdown").innerHTML = days + " days " + hours + " hours "
+				+ minutes + " minutes ";
+				// If the count down is finished, write some text
+				if (distance < 0) {
+					clearInterval(x);
+					document.getElementById("countdown").innerHTML = "IT'S TIME TO GET MARRIED";
+				}
+				}, 1000);
+			</script>
+	</body>
+</html>
