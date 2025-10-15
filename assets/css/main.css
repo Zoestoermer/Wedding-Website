@@ -3360,7 +3360,6 @@ html, body{
 				max-width: 100%;
 				max-height: 100vh;
 				object-fit: contain;
-				transition: transform .2s; /* Animation */
 			}
 
 			.wrapper.striped a:hover {
@@ -3409,6 +3408,12 @@ html, body{
 			}
 
 			/* On medium screens, push it a bit lower */
+			@media (min-width: 600px) {
+				.wrapper.striped img {
+					max-width: 85%;
+				}
+			}
+
 			@media (min-width: 900px) {
 				.wrapper.striped::before {
 					top: -12em;
@@ -3485,7 +3490,13 @@ html, body{
 				background-clip: content-box;
 			}
 
-			/* On medium screens, push it a bit lower */
+			@media (min-width: 700px) {
+				.wrapper.light:after {
+					bottom: -14em;
+					height: 12em;
+				}
+			}
+
 			@media (min-width: 900px) {
 				.wrapper.light:after {
 					bottom: -16em;
@@ -3493,10 +3504,9 @@ html, body{
 				}
 			}
 
-			/* On large screens, push it even lower */
-			@media (min-width: 1300px) {
+			@media (min-width: 1200px) {
 				.wrapper.light:after {
-					bottom: -16em;
+					bottom: -18em;
 					height: 16em;
 				}
 			}
@@ -3548,7 +3558,46 @@ html, body{
 			.wrapper.solid > div {
 				flex: 1 !important; /* let them share the row space */
 			}
-			
+
+/* ============== CONTACTS ============== */
+			.contacts {
+				text-align: center;
+				padding: 2rem 1rem;
+			}
+
+			/* list reset */
+			.contacts-list {
+				list-style: none;
+				margin: 0 auto;
+				padding: 0;
+				width: min(600px,70%); /* controlled width */
+				display: grid;
+				grid-template-columns: repeat(2, 1fr); /* two columns of pairs on normal screens */
+				gap: 0.5rem 2rem; /* row-gap / column-gap */
+				align-items: center;
+				justify-items: start;
+			}
+
+			/* each item: name left, phone right */
+			.contacts-list li {
+				display: contents; /* let .name and .phone align into the grid cells */
+			}
+
+			/* grid cells */
+			.contacts-list .name {
+				grid-column: auto;
+				justify-self: start;
+				color: #fff;
+				padding: 0.25rem 0;
+			}
+
+			.contacts-list .phone {
+				justify-self: end;
+				white-space: nowrap;        /* prevent phone from wrapping */
+				color: #fff;
+				padding: 0.25rem 0;
+				font-variant-numeric: tabular-nums;
+			}
 
 		@media screen and (max-width: 980px) {
 
