@@ -2960,10 +2960,10 @@ html, body{
 				justify-content: center;
 				align-items: center;
 				position: relative;
-				padding: 1em .50em;
+				padding: 1em 1em;
 			}
 			.header-logo {
-				width: 60px; /* shrink if needed */
+				width: 55px; /* shrink if needed */
 				margin: 0 auto;
 				display: block;
 			}
@@ -3430,7 +3430,8 @@ html, body{
 
 		.wrapper.light {
 			background-color: rgb(247, 241, 231); 
-			padding: 6em 4em 0em 4em;
+			/*padding: 6em 4em 0em 4em;*/
+			padding: 5em 0 4em 0;
 			display: flex;              /* make it a flex container */
 			flex-direction: column;     /* stack items vertically */
 			align-items: center;        /* horizontal centering */
@@ -3440,6 +3441,7 @@ html, body{
 			.wrapper.light h2, .wrapper.light h4, .wrapper.light p{
 				color: black;
 				text-align: center;
+				padding: 0 2em;
 			}
 
 			.wrapper.light a{
