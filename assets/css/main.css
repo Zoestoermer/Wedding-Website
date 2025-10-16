@@ -2798,6 +2798,7 @@ html, body{
 			width: 80px;   
 			height: auto;
 			z-index: 1000;
+			padding: .5em 0 0;
 		}
 
 		.nav-links a {
@@ -2952,7 +2953,7 @@ html, body{
 		/* Shrink logo on small screens */
 		@media screen and (max-width: 480px) {
 			#header {
-				height: 0;
+				height: 1.2em;
 				line-height:0;
 			}
 			.header-container {
@@ -3326,6 +3327,7 @@ html, body{
 			background: linear-gradient(rgba(161, 175, 202, 0.637), rgba(161, 175, 202, 0.637/*light yellow-white - transparent*/)), url("images/blue_stripes.png") right top / auto repeat;
 			color: white;
 			position: relative;
+			padding: 0 0;
 		}
 
 			.wrapper.striped h1 {
@@ -3371,7 +3373,7 @@ html, body{
 			.wrapper.striped::before {
 				content: "";
 				position: absolute;
-				top: -11em;
+				top: -12em !important;
 				left: 0;
 				width: 100%;
 				height: 12em; /* wave height */
@@ -3517,7 +3519,7 @@ html, body{
 			background-color: #798db9; 
 			display: flex;             
 			flex-direction: row !important; /*stack items*/
-			padding: 5em 0 4em 0;
+			padding: 5em 0 1em 0;
 		}
 
 			.wrapper.solid h2{
@@ -3559,6 +3561,25 @@ html, body{
 
 			.wrapper.solid > div {
 				flex: 1 !important; /* let them share the row space */
+			}
+
+			.wrapper.solid:after {
+				content: "";
+				position: absolute;
+				bottom: -12em;
+				left: 0;
+				width: 100%;
+				height: 12em; /* wave height */
+				-webkit-mask: url("data:image/svg+xml;charset=utf8,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100' preserveAspectRatio='none'%3E%3Cpath d='M0 60 C 15 10, 30 90, 50 60 C 70 30, 85 90, 100 60 L100 105 L0 105 Z' /%3E%3C/svg%3E") right top / cover repeat;
+				-webkit-mask-repeat: repeat;
+				-webkit-mask-size: cover;
+				mask: url("data:image/svg+xml;charset=utf8,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100' preserveAspectRatio='none'%3E%3Cpath d='M0 60 C 15 10, 30 90, 50 60 C 70 30, 85 90, 100 60 L100 105 L0 105 Z' /%3E%3C/svg%3E")  right top / cover repeat;
+				mask-repeat: repeat;
+				mask-size: cover;
+				background: inherit;
+				z-index: 0;
+				background-origin: border-box;
+				background-clip: content-box;
 			}
 
 /* ============== CONTACTS ============== */
@@ -3805,10 +3826,10 @@ html, body{
 }
 
 	.bridesmaids img {
-		width: 200px !important;      /* change this to the size you want */
-		height: 200px !important;     /* keep square for perfect circle */
-		max-width: none !important;   /* override global max-width:100% rules */
-		display: block;               /* remove inline spacing issues */
+		width: 100% !important;      /* change this to the size you want */
+		max-width: 200px !important; 
+		aspect-ratio: 1 / 1;
+		display: block;             
 		border-radius: 50% !important;
 		object-fit: cover;
 		padding: 0 !important;
@@ -3830,11 +3851,15 @@ html, body{
 		.bridesmaids {
 			grid-template-columns: repeat(2, 1fr);
 		}
-		.bridesmaids img {
-			width: 150px;
-		}
 	}
 
+	@media (max-width: 460px) {
+		.bridesmaids img{
+			width: 120px !important;
+			height: 120px !important;
+		}
+	}
+	
 
 
 /* ==================================== Footer ==================================== */
