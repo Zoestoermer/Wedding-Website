@@ -3859,7 +3859,261 @@ html, body{
 			height: 120px !important;
 		}
 	}
-	
+
+/* ===================================== RSVP ===================================== */
+/* Button */
+    .open-btn {
+        padding: 10px 20px;
+        font-size: 16px;
+        cursor: pointer;
+    }
+
+    /* Overlay */
+    .overlay {
+        position: fixed;
+		inset: 0;
+
+		display: none;
+		align-items: center;
+		justify-content: center;
+
+		background: rgba(0, 0, 0, 0.6);
+
+		z-index: 2147483647;
+		isolation: isolate;
+    }
+
+    /* Form container */
+    .form-container {
+        position: fixed;
+		top: 50%;
+		left: 50%;
+		transform: translate(-50%, -50%);
+
+		width: 820px;
+		max-width: 92vw;
+		max-height: 90vh;
+		overflow-y: auto;
+
+		background: #ffffff;
+		padding: 40px 30px 30px;
+		border-radius: 10px;
+
+		box-shadow: 0 20px 50px rgba(0, 0, 0, 0.4);
+
+		z-index: 2147483647;
+	}
+
+	body.no-scroll {
+    overflow: hidden;
+    height: 100vh;
+}
+
+/* Close X */
+.close-btn {
+    position: absolute;
+    top: 12px;
+    right: 14px;
+
+    font-size: 22px;
+    font-weight: 400;
+    line-height: 1;
+
+    background: none;
+    border: none;
+    cursor: pointer;
+
+    color: #333;
+}
+
+.close-btn:hover {
+    opacity: 0.6;
+}
+
+/* =====================================
+   RSVP FORM STYLES
+===================================== */
+
+.rsvp-form {
+    font-family: Georgia, serif;
+    color: #111;
+}
+
+/* Sections */
+.form-section {
+    margin-bottom: 36px;
+}
+
+/* Section headings */
+.section-label {
+    display: block;
+    font-size: 14px;
+    margin-bottom: 8px;
+}
+
+.section-label span {
+    font-size: 14px;
+    color: #555;
+}
+
+/* Helper text */
+.helper-text {
+    margin: 0 0 px;
+    font-size: 12px;
+    color: #666;
+}
+
+/* Name rows */
+.name-row {
+    display: flex;
+    gap: 30px;
+}
+
+/* Field wrapper */
+.field {
+    position: relative;
+    flex: 1;
+}
+
+/* Inputs */
+.field input {
+    width: 100%;
+    border: none;
+    border-bottom: 1px solid #333;
+    padding: 8px 0;
+    font-size: 12px;
+    background: rgba(224, 218, 218, 0.541);
+    outline: none;
+    font-family: inherit;
+}
+
+/* Labels under inputs */
+.floating-label {
+    display: block;
+    margin-top: 6px;
+    font-size: 14px;
+    color: #000;
+}
+
+/* Attendance checkboxes */
+.checkbox-group {
+    margin-top: 16px;
+}
+
+.attendance-row {
+    display: flex;
+    gap: 30px;
+}
+
+.attendance-row .form-section {
+    flex: 1;
+}
+
+@media (max-width: 700px) {
+    .attendance-row {
+        flex-direction: column;
+    }
+}
+
+/* =====================================
+   Guest Counter
+===================================== */
+.guest-counter {
+  display: flex;
+  align-items: center;
+  gap: 8x;
+  font-size: 14px;
+}
+
+.guest-counter button {
+  background: none;
+  border: 1px solid #333;
+  width: 20px;
+  height: 30px;
+  border-radius: 50%;
+  cursor: pointer;
+  font-size: 14px;
+}
+
+.guest-counter span {
+  min-width: 20px;
+  text-align: center;
+}
+
+
+/* =====================================
+   CUSTOM RADIO BUTTONS
+===================================== */
+
+.radio-group {
+    margin-top: 16px;
+}
+
+.radio-option {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+
+    font-size: 16px;
+    margin-bottom: 12px;
+    cursor: pointer;
+    user-select: none;
+}
+
+/* Hide native radio */
+.radio-option input {
+    position: absolute;
+    opacity: 0;
+}
+
+/* Custom circle */
+.custom-radio {
+    width: 16px;
+    height: 16px;
+    border: 1.5px solid #333;
+    border-radius: 50%;
+    display: inline-block;
+    position: relative;
+}
+
+/* Filled dot when selected */
+.radio-option input:checked + .custom-radio::after {
+    content: "";
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 8px;
+    height: 8px;
+    background: #333;
+    border-radius: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.checkbox-group label {
+    display: block;
+    font-size: 16px;
+    margin-bottom: 10px;
+    cursor: pointer;
+}
+
+.checkbox-group input {
+    margin-right: 8px;
+}
+
+/* =====================================
+   MOBILE REFINEMENTS
+===================================== */
+
+@media (max-width: 600px) {
+    .name-row {
+        flex-direction: column;
+        gap: 20px;
+    }
+
+    .form-container {
+        padding: 30px 20px 25px;
+    }
+}
 
 
 /* ==================================== Footer ==================================== */
