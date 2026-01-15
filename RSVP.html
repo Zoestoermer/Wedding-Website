@@ -104,7 +104,7 @@
 												<!-- Guest Count -->
 												<div class="form-section" id="guestCountSection" style="display:none;">
 												<label class="section-label">
-													Total guests attending
+													Total guests attending <span style="font-size:x-small;">If listed on invitation</span>
 												</label>
 
 												<div class="guest-counter">
@@ -192,6 +192,12 @@
 											</div>
 
 											<button type="submit">Submit</button>
+
+											<div id="successMessage" style="display:none; text-align:center;">
+											<h3>Thank you!</h3>
+											<p>Your RSVP has been received</p>
+											</div>
+
 											</form>
 											</div>
 										</div>
@@ -233,81 +239,34 @@
 
 		<!--RSVP Form -->
 			<script>
-				function openForm() {
-					document.getElementById("formOverlay").style.display = "flex";
-					//document.body.classList.add("modal-open");
-					document.body.classList.add("no-scroll"); // lock background scroll
-				}
-
-				function closeForm(event) {
-				if (!event || event.target.id === "formOverlay") {
-					document.getElementById("formOverlay").style.display = "none";
-					//document.body.classList.remove("modal-open");
-					document.body.classList.remove("no-scroll"); // restore background scroll
-				}
-				}
-
-				document.getElementById("rsvpForm").addEventListener("submit", function (e) {
-				e.preventDefault();
-
-				const guests = [
-				{
-					first: form.responderFirstName.value,
-					last: form.responderLastName.value
-				}
-				];
-
-				if (form.responderAttending.value === "Yes") {
-				for (let i = 2; i <= guestCount; i++) {
-					guests.push({
-					first: form[`guest${i}FirstName`].value,
-					last: form[`guest${i}LastName`].value
-					});
-				}
-				}
-
-				const data = {
-				responder: guests[0],
-				attending: form.responderAttending.value,
-				guestCount: form.responderAttending.value === "Yes" ? guestCount : 0,
-				guests,
-				welcomeParty: form.welcome_party.value,
-				movie: form.movie?.value || "",
-				notes: form.notes.value
-				};
-
-				fetch("https://script.google.com/macros/s/AKfycby9EHmvcScyLT2PHZDlEVPNbkrOKRJ2YR-8rJzsd_th9Z6npsaetc29WqDCajTx7Hj81g/exec", {
-					method: "POST",
-					body: JSON.stringify(data)
-				})
-					.then(res => res.json())
-					.then(() => {
-					alert("Thank you! Your RSVP has been submitted.");
-					form.reset();
-					closeForm();
-					})
-					.catch(() => {
-					alert("Submission failed. Please try again.");
-					});
-				});
-			</script>
-
-			<script>
-				let guestCount = 1;
+/* ===============================
+   GLOBAL STATE
+================================ */
+let guestCount = 1;
 const maxGuests = 6;
 
+/* ===============================
+   MODAL CONTROLS
+================================ */
 function openForm() {
   document.getElementById("formOverlay").style.display = "flex";
   document.body.classList.add("no-scroll");
 }
 
 function closeForm(event) {
-  if (!event || event.target.id === "formOverlay") {
+  if (!event || event.target?.id === "formOverlay") {
     document.getElementById("formOverlay").style.display = "none";
     document.body.classList.remove("no-scroll");
+
+    // Reset modal state
+    document.getElementById("rsvpForm").style.display = "block";
+    document.getElementById("successMessage").style.display = "none";
   }
 }
 
+/* ===============================
+   ATTENDANCE LOGIC
+================================ */
 function handleAttendanceChange() {
   const attending = document.querySelector(
     'input[name="responderAttending"]:checked'
@@ -333,12 +292,15 @@ function handleAttendanceChange() {
     document.getElementById("guestCountInput").value = "1";
     additionalGuests.innerHTML = "";
 
-    document.querySelectorAll(
-      'input[name="welcome_party"], input[name="movie"]'
-    ).forEach(i => i.checked = false);
+    document
+      .querySelectorAll('input[name="welcome_party"], input[name="movie"]')
+      .forEach(input => (input.checked = false));
   }
 }
 
+/* ===============================
+   GUEST COUNTER
+================================ */
 function changeGuestCount(amount) {
   guestCount = Math.min(Math.max(1, guestCount + amount), maxGuests);
   document.getElementById("guestCount").textContent = guestCount;
@@ -354,13 +316,11 @@ function renderAdditionalGuests() {
     container.innerHTML += `
       <div class="form-section">
         <label class="section-label">Guest ${i} Name</label>
-
         <div class="name-row">
           <div class="field">
             <input type="text" name="guest${i}FirstName">
             <label class="floating-label">First Name</label>
           </div>
-
           <div class="field">
             <input type="text" name="guest${i}LastName">
             <label class="floating-label">Last Name</label>
@@ -370,7 +330,71 @@ function renderAdditionalGuests() {
     `;
   }
 }
+
+/* ===============================
+   FORM SUBMISSION
+================================ */
+document.getElementById("rsvpForm").addEventListener("submit", function (e) {
+  e.preventDefault();
+
+  const form = e.target;
+
+  const guests = [
+    {
+      first: form.responderFirstName.value,
+      last: form.responderLastName.value
+    }
+  ];
+
+  if (form.responderAttending.value === "Yes") {
+    for (let i = 2; i <= guestCount; i++) {
+      guests.push({
+        first: form[`guest${i}FirstName`]?.value || "",
+        last: form[`guest${i}LastName`]?.value || ""
+      });
+    }
+  }
+
+  const payload = {
+    responderFirstName: form.responderFirstName.value,
+    responderLastName: form.responderLastName.value,
+    attending: form.responderAttending.value,
+    guestCount: form.responderAttending.value === "Yes" ? guestCount : 0,
+    guests,
+    welcomeParty: form.welcome_party?.value || "",
+    movie: form.movie?.value || "",
+    notes: form.notes?.value || ""
+  };
+
+  fetch("https://script.google.com/macros/s/AKfycby9EHmvcScyLT2PHZDlEVPNbkrOKRJ2YR-8rJzsd_th9Z6npsaetc29WqDCajTx7Hj81g/exec", {
+    method: "POST",
+    body: JSON.stringify(payload)
+  })
+    .then(res => res.json())
+    .then(() => {
+      showSuccessMessage();
+      form.reset();
+    })
+    .catch(() => {
+      alert("Submission failed. Please try again.");
+    });
+});
+
+/* ===============================
+   SUCCESS MESSAGE
+================================ */
+function showSuccessMessage() {
+  document.getElementById("rsvpForm").style.display = "none";
+  document.getElementById("successMessage").style.display = "block";
+
+  // Optional auto-close after 3s
+  setTimeout(() => {
+    closeForm();
+  }, 3000);
+}
 </script>
+
+
 			
 	</body>
 </html>
