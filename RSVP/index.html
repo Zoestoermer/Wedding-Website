@@ -62,145 +62,145 @@
 
 											<form class="rsvp-form" id="rsvpForm">
 
-											<!-- Responder Name -->
-											<div class="form-section">
-												<label class="section-label">
-												Name <span style="font-size:x-small;">(required)</span>
-												</label>
-
-												<div class="name-row">
-												<div class="field">
-													<input type="text" name="responderFirstName" required>
-													<label class="floating-label">First Name</label>
-												</div>
-
-												<div class="field">
-													<input type="text" name="responderLastName" required>
-													<label class="floating-label">Last Name</label>
-												</div>
-												</div>
-											</div>
-
-											<!-- Attendance + Guest Count (side-by-side) -->
-											<div class="attendance-row">
-
-												<!-- Attendance -->
+												<!-- Responder Name -->
 												<div class="form-section">
-												<label class="section-label">
-													Will you be attending? <span style="font-size:x-small;">(required)</span>
-												</label>
-
-												<div class="radio-group">
-													<label class="radio-option">
-													<input type="radio" name="responderAttending" value="Yes" required onchange="handleAttendanceChange()">
-													<span class="custom-radio"></span> Yes
+													<label class="section-label">
+													Name <span style="font-size:x-small;">(required)</span>
 													</label>
 
-													<label class="radio-option">
-													<input type="radio" name="responderAttending" value="No" onchange="handleAttendanceChange()">
-													<span class="custom-radio"></span> No
-													</label>
-												</div>
-												</div>
+													<div class="name-row">
+													<div class="field">
+														<input type="text" name="responderFirstName" required>
+														<label class="floating-label">First Name</label>
+													</div>
 
-												<!-- Guest Count -->
-												<div class="form-section" id="guestCountSection" style="display:none;">
-												<label class="section-label">
-													Total guests attending <span style="font-size:x-small;">If listed on invitation</span>
-												</label>
-
-												<div class="guest-counter">
-													<button type="button" onclick="changeGuestCount(-1)">−</button>
-													<span id="guestCount">1</span>
-													<button type="button" onclick="changeGuestCount(1)">+</button>
+													<div class="field">
+														<input type="text" name="responderLastName" required>
+														<label class="floating-label">Last Name</label>
+													</div>
+													</div>
 												</div>
 
-												<input type="hidden" name="guestCount" id="guestCountInput" value="1">
-												</div>
-
-											</div>
-
-											<!-- ATTENDING ONLY -->
-											<div id="attendingOnlySection" style="display:none;">
-
-												<!-- Additional Guests -->
-												<div id="additionalGuests"></div>
-
-												<!-- Welcome Party + Movie (side-by-side) -->
+												<!-- Attendance + Guest Count (side-by-side) -->
 												<div class="attendance-row">
 
-												<!-- Welcome Party -->
-												<div class="form-section">
+													<!-- Attendance -->
+													<div class="form-section">
 													<label class="section-label">
-													Will you be attending the welcome party?
+														Will you be attending? <span style="font-size:x-small;">(required)</span>
 													</label>
 
 													<div class="radio-group">
-													<label class="radio-option">
-														<input type="radio" name="welcome_party" value="Yes">
+														<label class="radio-option">
+														<input type="radio" name="responderAttending" value="Yes" required onchange="handleAttendanceChange()">
 														<span class="custom-radio"></span> Yes
-													</label>
+														</label>
 
-													<label class="radio-option">
-														<input type="radio" name="welcome_party" value="No">
+														<label class="radio-option">
+														<input type="radio" name="responderAttending" value="No" onchange="handleAttendanceChange()">
 														<span class="custom-radio"></span> No
-													</label>
+														</label>
 													</div>
-												</div>
+													</div>
 
-												<!-- Movie Choice -->
-												<div class="form-section">
+													<!-- Guest Count -->
+													<div class="form-section" id="guestCountSection" style="display:none;">
 													<label class="section-label">
-													Movie preference during the welcome party
+														Total guests attending <span style="font-size:x-small;">If listed on invitation</span>
 													</label>
 
-													<div class="radio-group">
-													<label class="radio-option">
-														<input type="radio" name="movie" value="Option A">
-														<span class="custom-radio"></span> Option A
-													</label>
-													<label class="radio-option">
-														<input type="radio" name="movie" value="Option B">
-														<span class="custom-radio"></span> Option B
-													</label>
-													<label class="radio-option">
-														<input type="radio" name="movie" value="Option C">
-														<span class="custom-radio"></span> Option C
-													</label>
-													<label class="radio-option">
-														<input type="radio" name="movie" value="Option D">
-														<span class="custom-radio"></span> Option D
-													</label>
+													<div class="guest-counter">
+														<button type="button" onclick="changeGuestCount(-1)">−</button>
+														<span id="guestCount">1</span>
+														<button type="button" onclick="changeGuestCount(1)">+</button>
 													</div>
-												</div>
+
+													<input type="hidden" name="guestCount" id="guestCountInput" value="1">
+													</div>
 
 												</div>
 
-												<!-- Dietary Notes -->
-												<div class="form-section">
-												<label class="section-label">Dietary restrictions or notes</label>
-												<div class="field">
-													<input type="text" name="notes">
+												<!-- ATTENDING ONLY -->
+												<div id="attendingOnlySection" style="display:none;">
+
+													<!-- Additional Guests -->
+													<div id="additionalGuests"></div>
+
+													<!-- Welcome Party + Movie (side-by-side) -->
+													<div class="attendance-row">
+
+													<!-- Welcome Party -->
+													<div class="form-section">
+														<label class="section-label">
+														Will you be attending the welcome party?
+														</label>
+
+														<div class="radio-group">
+														<label class="radio-option">
+															<input type="radio" name="welcome_party" value="Yes">
+															<span class="custom-radio"></span> Yes
+														</label>
+
+														<label class="radio-option">
+															<input type="radio" name="welcome_party" value="No">
+															<span class="custom-radio"></span> No
+														</label>
+														</div>
+													</div>
+
+													<!-- Movie Choice -->
+													<div class="form-section">
+														<label class="section-label">
+														Movie preference during the welcome party
+														</label>
+
+														<div class="radio-group">
+														<label class="radio-option">
+															<input type="radio" name="movie" value="Option A">
+															<span class="custom-radio"></span> Option A
+														</label>
+														<label class="radio-option">
+															<input type="radio" name="movie" value="Option B">
+															<span class="custom-radio"></span> Option B
+														</label>
+														<label class="radio-option">
+															<input type="radio" name="movie" value="Option C">
+															<span class="custom-radio"></span> Option C
+														</label>
+														<label class="radio-option">
+															<input type="radio" name="movie" value="Option D">
+															<span class="custom-radio"></span> Option D
+														</label>
+														</div>
+													</div>
+
+													</div>
+
+													<!-- Dietary Notes -->
+													<div class="form-section">
+														<label class="section-label">Dietary restrictions or notes</label>
+														<div class="field">
+															<input type="text" name="notes">
+														</div>
+													</div>
+
 												</div>
+
+												<!-- Success Messages -->
+												<div id="attendanceYesMessage" style="display:none; text-align:center;">
+													<p>Yay! We are so excited to celebrate with you!</p>
+												</div>
+												<div id="attendanceNoMessage" style="display:none; text-align:center;">
+													<p>We’re so sorry to miss you, thank you for letting us know ❤</p>
 												</div>
 
-											</div>
-
-											<div id="successMessage" style="display:none; text-align:center;">
-												<p>Yay! We are so excited to celebrate with you!</p>
-											</div>
-
-											<div id="attendanceNoMessage" style="display:none; text-align:center;">
-												<p>We’re so sorry to miss you, thank you for letting us know ❤</p>
-											</div>
-
-											<div class="submit-wrapper">
-												<button type="submit">Submit</button>
-											</div>
+												<div class="submit-wrapper">
+													<button type="submit">Submit</button>
+												</div>
 
 											</form>
-											</div>
 										</div>
+									</div>
 								</div>
 							</div>
 						</div>
@@ -245,8 +245,8 @@
 
 			/* MODAL CONTROLS */
 			function openForm() {
-			document.getElementById("formOverlay").style.display = "flex";
-			document.body.classList.add("no-scroll");
+				document.getElementById("formOverlay").style.display = "flex";
+				document.body.classList.add("no-scroll");
 			}
 
 			function closeForm(event) {
@@ -255,13 +255,15 @@
 				document.body.classList.remove("no-scroll");
 
 				document.getElementById("rsvpForm").style.display = "block";
+				document.getElementById("attendanceYesMessage").style.display = "none";
+    			document.getElementById("attendanceNoMessage").style.display = "none";
 			}
 			}
 
 			/* ATTENDANCE LOGIC */
 			function handleAttendanceChange() {
-			const attending = document.querySelector(
-				'input[name="responderAttending"]:checked'
+				const attending = document.querySelector(
+					'input[name="responderAttending"]:checked'
 			)?.value;
 
 			const attendingSection = document.getElementById("attendingOnlySection");
@@ -320,75 +322,67 @@
 
 			/* FORM SUBMISSION */
 			document.addEventListener("DOMContentLoaded", () => {
-			const form = document.getElementById("rsvpForm");
+				const form = document.getElementById("rsvpForm");
 
-			form.addEventListener("submit", async function(e) {
-				e.preventDefault();
+				form.addEventListener("submit", async function(e) {
+					e.preventDefault();
 
-				// Build payload
-				const payload = {
-				responderFirstName: form.responderFirstName.value,
-				responderLastName: form.responderLastName.value,
-				attending: form.responderAttending.value,
-				guestCount: form.responderAttending.value === "Yes" ? guestCount : 0,
-				guests: collectGuests(form),
-				welcomeParty: form.welcome_party?.value || "",
-				movie: form.movie?.value || "",
-				notes: form.notes?.value || ""
-				};
+					// Build payload
+					const payload = {
+						responderFirstName: form.responderFirstName.value,
+						responderLastName: form.responderLastName.value,
+						attending: form.responderAttending.value,
+						guestCount: form.responderAttending.value === "Yes" ? guestCount : 0,
+						guests: collectGuests(form),
+						welcomeParty: form.welcome_party?.value || "",
+						movie: form.movie?.value || "",
+						notes: form.notes?.value || ""
+					};
 
-				console.log("Submitting payload:", payload);
+					try {
+						const response = await fetch(
+							"https://script.google.com/macros/s/AKfycbypBM-EiANjszPjlOYABllgR9qmg5YvqvERUufxyj4jrUR4M1Hi_4Y3tnF3BriZ2ZCuHA/exec", // <-- replace with your Apps Script URL
+							{
+							method: "POST",
+							headers: { "Content-Type": "application/json" },
+							body: JSON.stringify(payload)
+						}
+					);
 
-				try {
-				const response = await fetch(
-					"https://script.google.com/macros/s/AKfycbypBM-EiANjszPjlOYABllgR9qmg5YvqvERUufxyj4jrUR4M1Hi_4Y3tnF3BriZ2ZCuHA/exec", // <-- replace with your Apps Script URL
-					{
-					method: "POST",
-					headers: { "Content-Type": "application/json" },
-					body: JSON.stringify(payload)
+					const result = await response.json();
+
+					if (result.success) {
+						showSuccessMessage(form.responderAttending.value); 
+						form.reset();
+					} else {
+						alert("Submission failed: " + result.error);
 					}
-				);
 
-				const result = await response.json();
-				console.log("Server response:", result);
-
-				if (result.success) {
-					showSuccessMessage(form.responderAttending.value);
-					form.reset();
-				}
-
-				/*if (result.success) {
-					showSuccessMessage();
-					form.reset();
-				} */else {
-					alert("Submission failed: " + result.error);
-				}
-
-				} catch (err) {
-				console.error("Fetch error:", err);
-				alert("Submission failed. Check console for details.");
-				}
-			});
+					} catch (err) {
+						console.error("Fetch error:", err);
+						alert("Submission failed. Check console for details.");
+					}
+				});
 			});
 
 			/* Collect guest names */
 			function collectGuests(form) {
-			const guests = [
-				{ first: form.responderFirstName.value, last: form.responderLastName.value }
-			];
+				const guests = [
+					{ first: form.responderFirstName.value, last: form.responderLastName.value }
+				];
 
-			for (let i = 2; i <= guestCount; i++) {
-				guests.push({
-					first: form[`guest${i}FirstName`]?.value || "",
-					last: form[`guest${i}LastName`]?.value || ""
-				});
-			}
+				for (let i = 2; i <= guestCount; i++) {
+					guests.push({
+						first: form[`guest${i}FirstName`]?.value || "",
+						last: form[`guest${i}LastName`]?.value || ""
+					});
+				}
 
-			return guests;
+				return guests;
 			}
 
 			/* Show success message */
-			function showSuccessMessage() {
+			function showSuccessMessage(attending) {
 				document.getElementById("rsvpForm").style.display = "none";
 				
 				if (attending === "Yes") {
@@ -399,7 +393,7 @@
 
 				setTimeout(() => closeForm(), 3000);
 			}
-			</script>
+		</script>
 
 			
 	</body>
