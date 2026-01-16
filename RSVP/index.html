@@ -120,13 +120,6 @@
 
 											</div>
 
-											<!-- Sorry Message 
-											<div class="form-section" id="sorryMessage" style="display:none; text-align:center;">
-												<label>
-												We’re so sorry to miss you, thank you for letting us know ❤
-												</label>
-											</div>-->
-
 											<!-- ATTENDING ONLY -->
 											<div id="attendingOnlySection" style="display:none;">
 
@@ -266,7 +259,6 @@ function closeForm(event) {
     document.body.classList.remove("no-scroll");
 
     document.getElementById("rsvpForm").style.display = "block";
-    document.getElementById("successMessage").style.display = "none";
   }
 }
 
@@ -280,18 +272,15 @@ function handleAttendanceChange() {
 
   const attendingSection = document.getElementById("attendingOnlySection");
   const guestCountSection = document.getElementById("guestCountSection");
-  const sorryMessage = document.getElementById("sorryMessage");
   const additionalGuests = document.getElementById("additionalGuests");
 
   if (attending === "Yes") {
     attendingSection.style.display = "block";
     guestCountSection.style.display = "block";
-    sorryMessage.style.display = "none";
     renderAdditionalGuests();
   } else {
     attendingSection.style.display = "none";
     guestCountSection.style.display = "none";
-    sorryMessage.style.display = "block";
 
     guestCount = 1;
     document.getElementById("guestCount").textContent = "1";
@@ -361,24 +350,28 @@ document.addEventListener("DOMContentLoaded", () => {
     console.log("Submitting payload:", payload);
 
     try {
-      const response = await fetch(
+      /*const response = await fetch(
         "https://script.google.com/macros/s/AKfycbxwEjGnrmraBhss-arfbe4HOfcjFZMuclsQlANzlmEjqx6ERaLgOnXRjzxSAuqu09oyHQ/exec", // <-- replace with your Apps Script URL
         {
           method: "POST",
           headers: { "Content-Type": "application/json" },
           body: JSON.stringify(payload)
         }
-      );
+      );*/
 
-      const result = await response.json();
+	  const params = new URLSearchParams();
+params.append("payload", JSON.stringify(payload));
+
+const response = await fetch(
+  "https://script.google.com/macros/s/AKfycbxwEjGnrmraBhss-arfbe4HOfcjFZMuclsQlANzlmEjqx6ERaLgOnXRjzxSAuqu09oyHQ/exec",
+  {
+    method: "POST",
+    body: params
+  }
+);
+      const result = await response.text();
       console.log("Server response:", result);
 
-      if (result.success) {
-        showSuccessMessage();
-        form.reset();
-      } else {
-        alert("Submission failed: " + result.error);
-      }
 
     } catch (err) {
       console.error("Fetch error:", err);
@@ -404,38 +397,6 @@ function collectGuests(form) {
 
   return guests;
 }
-
-/**
- * Show success message
- 
-function showSuccessMessage() {
-  document.getElementById("rsvpForm").style.display = "none";
-  document.getElementById("successMessage").style.display = "block";
-
-  setTimeout(() => {
-    closeForm();
-  }, 3000);
-}*/
-</script>
-
-<script>
-document.getElementById("rsvpForm").addEventListener("submit", function (e) {
-    e.preventDefault();
-
-    const attending = document.querySelector(
-        'input[name="responderAttending"]:checked'
-    )?.value;
-
-    // Hide the form
-    document.querySelector(".rsvp-form").style.display = "none";
-
-    // Show correct message
-    if (attending === "Yes") {
-        document.getElementById("attendanceYesMessage").style.display = "block";
-    } else {
-        document.getElementById("attendanceNoMessage").style.display = "block";
-    }
-});
 </script>
 
 
