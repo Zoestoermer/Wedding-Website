@@ -120,12 +120,12 @@
 
 											</div>
 
-											<!-- Sorry Message -->
+											<!-- Sorry Message 
 											<div class="form-section" id="sorryMessage" style="display:none; text-align:center;">
 												<label>
 												We’re so sorry to miss you, thank you for letting us know ❤
 												</label>
-											</div>
+											</div>-->
 
 											<!-- ATTENDING ONLY -->
 											<div id="attendingOnlySection" style="display:none;">
@@ -192,6 +192,15 @@
 												</div>
 
 											</div>
+
+											<div id="attendanceYesMessage" style="display:none; text-align:center;">
+												<p>Yay! We are so excited to celebrate with you!</p>
+											</div>
+
+											<div id="attendanceNoMessage" style="display:none; text-align:center;">
+												<p>We’re so sorry to miss you, thank you for letting us know ❤</p>
+											</div>
+
 
 											<button type="submit">Submit</button>
 
@@ -402,7 +411,7 @@ function collectGuests(form) {
 
 /**
  * Show success message
- */
+ 
 function showSuccessMessage() {
   document.getElementById("rsvpForm").style.display = "none";
   document.getElementById("successMessage").style.display = "block";
@@ -410,9 +419,28 @@ function showSuccessMessage() {
   setTimeout(() => {
     closeForm();
   }, 3000);
-}
+}*/
 </script>
 
+<script>
+document.getElementById("rsvpForm").addEventListener("submit", function (e) {
+    e.preventDefault();
+
+    const attending = document.querySelector(
+        'input[name="responderAttending"]:checked'
+    )?.value;
+
+    // Hide the form
+    document.querySelector(".rsvp-form").style.display = "none";
+
+    // Show correct message
+    if (attending === "Yes") {
+        document.getElementById("attendanceYesMessage").style.display = "block";
+    } else {
+        document.getElementById("attendanceNoMessage").style.display = "block";
+    }
+});
+</script>
 
 
 			
