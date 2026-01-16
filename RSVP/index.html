@@ -205,11 +205,6 @@
 												<button type="submit">Submit</button>
 											</div>
 
-											<div id="successMessage" style="display:none; text-align:center;">
-											<h3>Thank you!</h3>
-											<p>Your RSVP has been received</p>
-											</div>
-
 											</form>
 											</div>
 										</div>
@@ -367,7 +362,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
     try {
       const response = await fetch(
-        "https://script.google.com/macros/s/AKfycbypBM-EiANjszPjlOYABllgR9qmg5YvqvERUufxyj4jrUR4M1Hi_4Y3tnF3BriZ2ZCuHA/exec", // <-- replace with your Apps Script URL
+        "https://script.google.com/macros/s/AKfycbxwEjGnrmraBhss-arfbe4HOfcjFZMuclsQlANzlmEjqx6ERaLgOnXRjzxSAuqu09oyHQ/exec", // <-- replace with your Apps Script URL
         {
           method: "POST",
           headers: { "Content-Type": "application/json" },
