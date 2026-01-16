@@ -257,12 +257,15 @@ function openForm() {
 }
 
 function closeForm(event) {
-  if (!event || event.target?.id === "formOverlay") {
-    document.getElementById("formOverlay").style.display = "none";
-    document.body.classList.remove("no-scroll");
+  const overlay = document.getElementById("formOverlay");
+  const form = document.getElementById("rsvpForm");
 
-    document.getElementById("rsvpForm").style.display = "block";
-    document.getElementById("successMessage").style.display = "none";
+  if (!overlay || !form) return; // safety check
+
+  if (!event || event.target?.id === "formOverlay") {
+    overlay.style.display = "none";
+    document.body.classList.remove("no-scroll");
+    form.style.display = "block";
   }
 }
 
