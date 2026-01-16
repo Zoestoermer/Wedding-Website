@@ -186,12 +186,15 @@
 
 												</div>
 
-												<!-- Success Messages -->
-												<div id="attendanceYesMessage" style="display:none; text-align:center;">
-													<p>Yay! We are so excited to celebrate with you!</p>
+												<!-- Yeass Messages -->
+												<div class="form-section" id="yesMessage" style="display:none; text-align:center;">
+													<label>Yay! We are so excited to celebrate with you!</label>
 												</div>
-												<div id="attendanceNoMessage" style="display:none; text-align:center;">
-													<p>We’re so sorry to miss you, thank you for letting us know ❤</p>
+												<!-- Sorry Message -->
+												<div class="form-section" id="sorryMessage" style="display:none; text-align:center;">
+													<label>
+													We’re so sorry to miss you, thank you for letting us know ❤
+													</label>
 												</div>
 
 												<div class="submit-wrapper">
@@ -239,161 +242,209 @@
 
 		<!--RSVP Form -->
 			<script>
-			/* GLOBAL STATE */
-			let guestCount = 1;
-			const maxGuests = 6;
+			/* ===============================
+   GLOBAL STATE
+================================ */
+let guestCount = 1;
+const maxGuests = 6;
 
-			/* MODAL CONTROLS */
-			function openForm() {
-				document.getElementById("formOverlay").style.display = "flex";
-				document.body.classList.add("no-scroll");
-			}
+/* ===============================
+   MODAL CONTROLS
+================================ */
+function openForm() {
+  document.getElementById("formOverlay").style.display = "flex";
+  document.body.classList.add("no-scroll");
+}
 
-			function closeForm(event) {
-			if (!event || event.target?.id === "formOverlay") {
-				document.getElementById("formOverlay").style.display = "none";
-				document.body.classList.remove("no-scroll");
+function closeForm(event) {
+  if (!event || event.target?.id === "formOverlay") {
+    document.getElementById("formOverlay").style.display = "none";
+    document.body.classList.remove("no-scroll");
 
-				document.getElementById("rsvpForm").style.display = "block";
-			}
-			}
+    document.getElementById("rsvpForm").style.display = "block";
+    document.getElementById("successMessage").style.display = "none";
+  }
+}
 
-			/* ATTENDANCE LOGIC */
-			function handleAttendanceChange() {
-				const attending = document.querySelector(
-					'input[name="responderAttending"]:checked'
-				)?.value;
+/* ===============================
+   ATTENDANCE LOGIC
+================================ */
+function handleAttendanceChange() {
+  const attending = document.querySelector(
+    'input[name="responderAttending"]:checked'
+  )?.value;
 
-				const attendingSection = document.getElementById("attendingOnlySection");
-				const guestCountSection = document.getElementById("guestCountSection");
-				const additionalGuests = document.getElementById("additionalGuests");
-
-				const yesMsg = document.getElementById("attendanceYesMessage");
-				const noMsg = document.getElementById("attendanceNoMessage");
-
-				// Hide both messages initially
-				yesMsg.style.display = "none";
-				noMsg.style.display = "none";
-
-				if (attending === "Yes") {
-					// Show attending sections
-					attendingSection.style.display = "block";
-					guestCountSection.style.display = "block";
-					renderAdditionalGuests();
-
-					// Show "Yay" message immediately
-					yesMsg.style.display = "block";
-				} else if (attending === "No") {
-					// Hide attending sections
-					attendingSection.style.display = "none";
-					guestCountSection.style.display = "none";
-
-					guestCount = 1;
-					document.getElementById("guestCount").textContent = "1";
-					document.getElementById("guestCountInput").value = "1";
-					additionalGuests.innerHTML = "";
-
-					document.querySelectorAll('input[name="welcome_party"], input[name="movie"]')
-						.forEach(i => i.checked = false);
-
-					// Show "Sorry" message immediately
-					noMsg.style.display = "block";
-				}
-			}
+  const attendingSection = document.getElementById("attendingOnlySection");
+  const guestCountSection = document.getElementById("guestCountSection");
+  const sorryMessage = document.getElementById("sorryMessage");
+  const yesMessage = document.getElementById("yesMessage");
+  const additionalGuests = document.getElementById("additionalGuests");
 
 
-			/* GUEST COUNTER */
-			function changeGuestCount(amount) {
-				guestCount = Math.min(Math.max(1, guestCount + amount), maxGuests);
-				document.getElementById("guestCount").textContent = guestCount;
-				document.getElementById("guestCountInput").value = guestCount;
-				renderAdditionalGuests();
-			}
+  // Hide both messages initially
+  yesMessage.style.display = "none";
+  sorryMessage.style.display = "none";
 
-			function renderAdditionalGuests() {
-				const container = document.getElementById("additionalGuests");
-				container.innerHTML = "";
+	if (attending === "Yes") {
+    // Open the modal in case it was closed
+    document.getElementById("formOverlay").style.display = "flex";
+    document.body.classList.add("no-scroll");
 
-				for (let i = 2; i <= guestCount; i++) {
-					container.innerHTML += `
-					<div class="form-section">
-						<label class="section-label">Guest ${i} Name</label>
-						<div class="name-row">
-						<div class="field">
-							<input type="text" name="guest${i}FirstName">
-							<label class="floating-label">First Name</label>
-						</div>
-						<div class="field">
-							<input type="text" name="guest${i}LastName">
-							<label class="floating-label">Last Name</label>
-						</div>
-						</div>
-					</div>
-					`;
-				}
-			}
+    // Show attending sections
+    attendingSection.style.display = "block";
+    guestCountSection.style.display = "block";
 
-			/* FORM SUBMISSION */
-			document.addEventListener("DOMContentLoaded", () => {
-				const form = document.getElementById("rsvpForm");
+    // Show "Yes" message
+    yesMessage.style.display = "block";
 
-				form.addEventListener("submit", async function(e) {
-					e.preventDefault();
+    renderAdditionalGuests();
+  } else if (attending === "No") {
+    // Open the modal in case it was closed
+    document.getElementById("formOverlay").style.display = "flex";
+    document.body.classList.add("no-scroll");
 
-					// Build payload
-					const payload = {
-						responderFirstName: form.responderFirstName.value,
-						responderLastName: form.responderLastName.value,
-						attending: form.responderAttending.value,
-						guestCount: form.responderAttending.value === "Yes" ? guestCount : 0,
-						guests: collectGuests(form),
-						welcomeParty: form.welcome_party?.value || "",
-						movie: form.movie?.value || "",
-						notes: form.notes?.value || ""
-					};
+    // Hide attending sections
+    attendingSection.style.display = "none";
+    guestCountSection.style.display = "none";
 
-					console.log("Submitting payload:", payload);
+    guestCount = 1;
+    document.getElementById("guestCount").textContent = "1";
+    document.getElementById("guestCountInput").value = "1";
+    additionalGuests.innerHTML = "";
 
-					try {
-						const response = await fetch(
-							"https://script.google.com/macros/s/AKfycbyNamc5l6dO0HNICevHufpWPqJ5ZXievDN3P8gtAbCN0qnjOBkVBHMXjPbuEqtZmWZ5_w/exec", // <-- replace with your Apps Script URL
-							{
-							method: "POST",
-							headers: { "Content-Type": "application/json" },
-							body: JSON.stringify(payload)
-						}
-					);
+    document.querySelectorAll('input[name="welcome_party"], input[name="movie"]')
+      .forEach(i => i.checked = false);
 
-					const result = await response.json();
-					console.log("Server response:", result);
+    // Show "Sorry" message
+    sorryMessage.style.display = "block";
+  
 
-					if (!result.success) {
-						alert("Submission failed: " + result.error);
-					}
 
-					form.reset(); // reset form after submit
-				} catch (err) {
-					console.error("Fetch error:", err);
-					alert("Submission failed. Check console for details.");
-				}
-				});
-			});
+  
 
-			/* Collect guest names */
-			function collectGuests(form) {
-				const guests = [
-					{ first: form.responderFirstName.value, last: form.responderLastName.value }
-				];
+    guestCount = 1;
+    document.getElementById("guestCount").textContent = "1";
+    document.getElementById("guestCountInput").value = "1";
+    additionalGuests.innerHTML = "";
 
-				for (let i = 2; i <= guestCount; i++) {
-					guests.push({
-						first: form[`guest${i}FirstName`]?.value || "",
-						last: form[`guest${i}LastName`]?.value || ""
-					});
-				}
+    document
+      .querySelectorAll('input[name="welcome_party"], input[name="movie"]')
+      .forEach(i => i.checked = false);
+  }
+}
 
-				return guests;
-			}
-		</script>
+/* ===============================
+   GUEST COUNTER
+================================ */
+function changeGuestCount(amount) {
+  guestCount = Math.min(Math.max(1, guestCount + amount), maxGuests);
+  document.getElementById("guestCount").textContent = guestCount;
+  document.getElementById("guestCountInput").value = guestCount;
+  renderAdditionalGuests();
+}
+
+function renderAdditionalGuests() {
+  const container = document.getElementById("additionalGuests");
+  container.innerHTML = "";
+
+  for (let i = 2; i <= guestCount; i++) {
+    container.innerHTML += `
+      <div class="form-section">
+        <label class="section-label">Guest ${i} Name</label>
+        <div class="name-row">
+          <div class="field">
+            <input type="text" name="guest${i}FirstName">
+            <label class="floating-label">First Name</label>
+          </div>
+          <div class="field">
+            <input type="text" name="guest${i}LastName">
+            <label class="floating-label">Last Name</label>
+          </div>
+        </div>
+      </div>
+    `;
+  }
+}
+
+/* ===============================
+   FORM SUBMISSION
+================================ */
+document.addEventListener("DOMContentLoaded", () => {
+  const form = document.getElementById("rsvpForm");
+
+  form.addEventListener("submit", async function(e) {
+    e.preventDefault();
+
+    // Build payload
+    const payload = {
+      responderFirstName: form.responderFirstName.value,
+      responderLastName: form.responderLastName.value,
+      attending: form.responderAttending.value,
+      guestCount: form.responderAttending.value === "Yes" ? guestCount : 0,
+      guests: collectGuests(form),
+      welcomeParty: form.welcome_party?.value || "",
+      movie: form.movie?.value || "",
+      notes: form.notes?.value || ""
+    };
+
+    console.log("Submitting payload:", payload);
+
+    try {
+      const response = await fetch(
+        "https://script.google.com/macros/s/AKfycbypBM-EiANjszPjlOYABllgR9qmg5YvqvERUufxyj4jrUR4M1Hi_4Y3tnF3BriZ2ZCuHA/exec", // <-- replace with your Apps Script URL
+        {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify(payload)
+        }
+      );
+
+      const result = await response.json();
+      console.log("Server response:", result);
+
+      if (result.success) {
+        showSuccessMessage();
+        form.reset();
+      } else {
+        alert("Submission failed: " + result.error);
+      }
+
+    } catch (err) {
+      console.error("Fetch error:", err);
+      alert("Submission failed. Check console for details.");
+    }
+  });
+});
+
+/**
+ * Collect guest names
+ */
+function collectGuests(form) {
+  const guests = [
+    { first: form.responderFirstName.value, last: form.responderLastName.value }
+  ];
+
+  for (let i = 2; i <= guestCount; i++) {
+    guests.push({
+      first: form[`guest${i}FirstName`]?.value || "",
+      last: form[`guest${i}LastName`]?.value || ""
+    });
+  }
+
+  return guests;
+}
+
+/**
+ * Show success message
+ */
+function showSuccessMessage() {
+  document.getElementById("rsvpForm").style.display = "none";
+  document.getElementById("successMessage").style.display = "block";
+
+  setTimeout(() => {
+    closeForm();
+  }, 3000);
+}
+</script>
 	</body>
 </html>
