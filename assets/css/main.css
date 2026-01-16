@@ -3902,6 +3902,14 @@ html, body{
 		box-shadow: 0 20px 50px rgba(0, 0, 0, 0.4);
 
 		z-index: 2147483647;
+
+		@media (max-width: 600px) {
+			.radio-option {
+				gap: 14px;
+				margin-bottom: 16px;
+			}
+		}
+
 	}
 
 	body.no-scroll {
@@ -3916,6 +3924,8 @@ html, body{
     right: 14px;
 
     font-size: 22px;
+	padding: 12px;
+    margin: -10px;
     font-weight: 400;
     line-height: 1;
 
@@ -3995,10 +4005,10 @@ html, body{
     color: #000;
 }
 
-/* Attendance checkboxes */
+/* Attendance checkboxes 
 .checkbox-group {
     margin-top: 16px;
-}
+}*/
 
 .attendance-row {
     display: flex;
@@ -4015,10 +4025,55 @@ html, body{
     }
 }
 
+@media (max-width: 600px) {
+    .radio-option {
+        gap: 14px;
+        margin-bottom: 16px;
+    }
+}
+
+@media (max-width: 480px) {
+    .form-container {
+        width: 100%;
+        height: auto;
+        max-height: 95vh;
+        border-radius: 0;
+    }
+
+    .section-label {
+        font-size: 13px;
+    }
+
+    .radio-option {
+        font-size: 14px;
+    }
+
+    button {
+        width: 100%;
+    }
+}
+
 #attendanceYesMessage,
 #attendanceNoMessage {
     animation: fadeIn 0.4s ease forwards;
+	display: none;
+    margin-top: 20px;
+    font-size: 16px;
+    line-height: 1.4;
 }
+
+@media (max-width: 600px) {
+    #attendanceYesMessage,
+    #attendanceNoMessage {
+        text-align: center;
+        padding: 20px 15px;
+        margin: 25px auto 0;
+
+        max-width: 320px;
+        font-size: 17px;
+    }
+}
+
 
 @keyframes fadeIn {
     from {
@@ -4030,13 +4085,44 @@ html, body{
         transform: translateY(0);
     }
 }
+
+/* =====================================
+   STICKY SUBMIT BUTTON (MOBILE)
+===================================== */
+
+.submit-wrapper {
+    margin-top: 30px;
+}
+
+@media (max-width: 600px) {
+    .submit-wrapper {
+        position: sticky;
+        bottom: 0;
+        left: 0;
+
+        background: #fff;
+        padding: 15px 10px;
+        margin: 0 -20px -25px; /* aligns with form padding */
+
+        box-shadow: 0 -8px 20px rgba(0, 0, 0, 0.08);
+        z-index: 10;
+    }
+
+    .submit-btn {
+        width: 100%;
+        padding: 14px;
+        font-size: 16px;
+        border-radius: 6px;
+    }
+}
+
 /* =====================================
    Guest Counter
 ===================================== */
 .guest-counter {
   display: flex;
   align-items: center;
-  gap: 8x;
+  gap: 8px;
   font-size: 14px;
 }
 
@@ -4069,7 +4155,7 @@ html, body{
     align-items: center;
     gap: 10px;
 
-    font-size: 16px;
+    font-size: 12px;
     margin-bottom: 12px;
     cursor: pointer;
     user-select: none;
@@ -4104,7 +4190,7 @@ html, body{
     transform: translate(-50%, -50%);
 }
 
-.checkbox-group label {
+/*.checkbox-group label {
     display: block;
     font-size: 16px;
     margin-bottom: 10px;
@@ -4113,7 +4199,7 @@ html, body{
 
 .checkbox-group input {
     margin-right: 8px;
-}
+}*/
 
 /* =====================================
    MOBILE REFINEMENTS
