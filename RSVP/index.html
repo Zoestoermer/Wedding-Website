@@ -31,7 +31,7 @@
 							<img src="/images/Z_C_Favicon.png" alt="Logo" class="header-logo" />
 							
 							<p class="nav-links">
-								<a href="index.html">Home</a> &nbsp;&nbsp;&nbsp;
+								<a href="/index.html">Home</a> &nbsp;&nbsp;&nbsp;
 								<a href="#.html">Travel</a> &nbsp;&nbsp;&nbsp;
 								<a href="#.html">Schedule</a> &nbsp;&nbsp;&nbsp;
 								<a href="#.html">FAQs</a> &nbsp;&nbsp;&nbsp;
@@ -193,7 +193,10 @@
 
 											</div>
 
-											<button type="submit">Submit</button>
+											<div class="submit-wrapper">
+												<button type="submit" class="submit-btn">Submit</button>
+											</div>
+
 
 											<div id="successMessage" style="display:none; text-align:center;">
 											<h3>Thank you!</h3>
@@ -332,59 +335,7 @@ function renderAdditionalGuests() {
   }
 }
 
-/* ===============================
-   FORM SUBMISSION
-================================ */
-document.addEventListener("DOMContentLoaded", () => {
-  const form = document.getElementById("rsvpForm");
-
-  form.addEventListener("submit", async function(e) {
-    e.preventDefault();
-
-    // Build payload
-    const payload = {
-      responderFirstName: form.responderFirstName.value,
-      responderLastName: form.responderLastName.value,
-      attending: form.responderAttending.value,
-      guestCount: form.responderAttending.value === "Yes" ? guestCount : 0,
-      guests: collectGuests(form),
-      welcomeParty: form.welcome_party?.value || "",
-      movie: form.movie?.value || "",
-      notes: form.notes?.value || ""
-    };
-
-    console.log("Submitting payload:", payload);
-
-    try {
-      const response = await fetch(
-        "https://script.google.com/macros/s/AKfycbwDUUhKFckPERnfWn8JYTnufHtNl-akqy2qw8gxJQFgh7i9skG5zoak5YT8cR5gNT3zMA/exec", // <-- replace with your Apps Script URL
-        {
-          method: "POST",
-          headers: { "Content-Type": "application/json" },
-          body: JSON.stringify(payload)
-        }
-      );
-
-      const result = await response.json();
-      console.log("Server response:", result);
-
-      if (result.success) {
-        showSuccessMessage();
-        form.reset();
-      } else {
-        alert("Submission failed: " + result.error);
-      }
-
-    } catch (err) {
-      console.error("Fetch error:", err);
-      alert("Submission failed. Check console for details.");
-    }
-  });
-});
-
-/**
- * Collect guest names
- */
+/* Collect guest names */
 function collectGuests(form) {
   const guests = [
     { first: form.responderFirstName.value, last: form.responderLastName.value }
@@ -400,9 +351,7 @@ function collectGuests(form) {
   return guests;
 }
 
-/**
- * Show success message
- */
+/* Show success message */
 function showSuccessMessage() {
   document.getElementById("rsvpForm").style.display = "none";
   document.getElementById("successMessage").style.display = "block";
@@ -413,6 +362,45 @@ function showSuccessMessage() {
 }
 </script>
 
+
+<!-- FORM SUBMISSION  -->  
+
+<script>
+const SCRIPT_URL = "Phttps://script.google.com/macros/s/AKfycbxxJxvQtVuUI89WKwONw8ArePP_NNgA0tUMvZmtivX6U9zv_nybxUDvQchuyZojEIj3iA/exec";
+
+document.getElementById("rsvpForm").addEventListener("submit", function (e) {
+  e.preventDefault();
+
+  const form = e.target;
+  const attending = form.responderAttending.value;
+
+  const payload = {
+    responderFirstName: form.responderFirstName.value,
+    responderLastName: form.responderLastName.value,
+    attending: attending,
+    guestCount: document.getElementById("guestCountInput").value,
+    guests: collectGuests(form),
+    welcome_party: form.welcome_party?.value || "",
+    movie: form.movie?.value || "",
+    notes: form.notes?.value || ""
+  };
+
+  fetch(SCRIPT_URL, {
+    method: "POST",
+    body: JSON.stringify(payload),
+    headers: { "Content-Type": "application/json" }
+  })
+  .then(res => res.json())
+  .then(() => {
+    form.style.display = "none";
+    document.getElementById("successMessage").style.display = "block";
+  })
+  .catch(err => {
+    alert("Submission failed. Please try again.");
+    console.error(err);
+  });
+});
+</script>
 
 
 			
