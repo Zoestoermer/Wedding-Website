@@ -3439,12 +3439,11 @@ html, body{
 
 		.wrapper.light {
 			background-color: rgb(247, 241, 231); 
-			/*padding: 6em 4em 0em 4em;*/
 			padding: 5em 0 4em 0;
-			display: flex;              /* make it a flex container */
-			flex-direction: column;     /* stack items vertically */
-			align-items: center;        /* horizontal centering */
-			justify-content: center;    /* vertical centering */
+			display: flex; 
+			flex-direction: column;
+			align-items: center;  
+			justify-content: center; 
 		}
 
 			.wrapper.light h2, .wrapper.light h4, .wrapper.light p{

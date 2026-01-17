@@ -247,176 +247,209 @@
 
 		<!--RSVP Form -->
 		<script>
-/* ===============================
-   GLOBAL STATE
-================================ */
-let guestCount = 1;
-const maxGuests = 6;
+			/* GLOBAL STATE */
+			let guestCount = 1;
+			const maxGuests = 6;
 
-/* ===============================
-   MODAL CONTROLS
-================================ */
-function openForm() {
-  document.getElementById("formOverlay").style.display = "flex";
-  document.body.classList.add("no-scroll");
-}
+			/* MODAL CONTROLS */
+			function openForm() {
+			document.getElementById("formOverlay").style.display = "flex";
+			document.body.classList.add("no-scroll");
+			}
 
-function closeForm(event) {
-  if (!event || event.target?.id === "formOverlay") {
-    document.getElementById("formOverlay").style.display = "none";
-    document.body.classList.remove("no-scroll");
+			function closeForm(event) {
+			if (!event || event.target?.id === "formOverlay") {
+				document.getElementById("formOverlay").style.display = "none";
+				document.body.classList.remove("no-scroll");
 
-    document.getElementById("rsvpForm").style.display = "block";
-    document.getElementById("successMessage").style.display = "none";
-  }
-}
+				document.getElementById("rsvpForm").style.display = "block";
+				document.getElementById("successMessage").style.display = "none";
+			}
+			}
 
-/* ===============================
-   ATTENDANCE LOGIC
-================================ */
-function handleAttendanceChange() {
-  const attending = document.querySelector(
-    'input[name="responderAttending"]:checked'
-  )?.value;
+			/* ATTENDANCE LOGIC */
+			function handleAttendanceChange() {
+			const attending = document.querySelector(
+				'input[name="responderAttending"]:checked'
+			)?.value;
 
-  const attendingSection = document.getElementById("attendingOnlySection");
-  const guestCountSection = document.getElementById("guestCountSection");
-  const sorryMessage = document.getElementById("sorryMessage");
-  const additionalGuests = document.getElementById("additionalGuests");
+			const attendingSection = document.getElementById("attendingOnlySection");
+			const guestCountSection = document.getElementById("guestCountSection");
+			const sorryMessage = document.getElementById("sorryMessage");
+			const additionalGuests = document.getElementById("additionalGuests");
 
-  if (attending === "Yes") {
-    attendingSection.style.display = "block";
-    guestCountSection.style.display = "block";
-    sorryMessage.style.display = "none";
-    renderAdditionalGuests();
-  } else {
-    attendingSection.style.display = "none";
-    guestCountSection.style.display = "none";
-    sorryMessage.style.display = "block";
+			if (attending === "Yes") {
+				attendingSection.style.display = "block";
+				guestCountSection.style.display = "block";
+				sorryMessage.style.display = "none";
+				renderAdditionalGuests();
+			} else {
+				attendingSection.style.display = "none";
+				guestCountSection.style.display = "none";
+				sorryMessage.style.display = "block";
 
-    guestCount = 1;
-    document.getElementById("guestCount").textContent = "1";
-    document.getElementById("guestCountInput").value = "1";
-    additionalGuests.innerHTML = "";
+				guestCount = 1;
+				document.getElementById("guestCount").textContent = "1";
+				document.getElementById("guestCountInput").value = "1";
+				additionalGuests.innerHTML = "";
 
-    document
-      .querySelectorAll('input[name="welcome_party"], input[name="movie"]')
-      .forEach(i => i.checked = false);
-  }
-}
+				document
+				.querySelectorAll('input[name="welcome_party"], input[name="movie"]')
+				.forEach(i => i.checked = false);
+			}
+			}
 
-/* ===============================
-   GUEST COUNTER
-================================ */
-function changeGuestCount(amount) {
-  guestCount = Math.min(Math.max(1, guestCount + amount), maxGuests);
-  document.getElementById("guestCount").textContent = guestCount;
-  document.getElementById("guestCountInput").value = guestCount;
-  renderAdditionalGuests();
-}
+			/* GUEST COUNTER */
+			function changeGuestCount(amount) {
+				guestCount = Math.min(Math.max(1, guestCount + amount), maxGuests);
+				document.getElementById("guestCount").textContent = guestCount;
+				document.getElementById("guestCountInput").value = guestCount;
+				renderAdditionalGuests();
+			}
 
-function renderAdditionalGuests() {
-  const container = document.getElementById("additionalGuests");
-  container.innerHTML = "";
+			function renderAdditionalGuests() {
+				const container = document.getElementById("additionalGuests");
+				container.innerHTML = "";
 
-  for (let i = 2; i <= guestCount; i++) {
-    container.innerHTML += `
-      <div class="form-section">
-        <label class="section-label">Guest ${i} Name</label>
-        <div class="name-row">
-          <div class="field">
-            <input type="text" name="guest${i}FirstName">
-            <label class="floating-label">First Name</label>
-          </div>
-          <div class="field">
-            <input type="text" name="guest${i}LastName">
-            <label class="floating-label">Last Name</label>
-          </div>
-        </div>
-      </div>
-    `;
-  }
-}
+				for (let i = 2; i <= guestCount; i++) {
+					container.innerHTML += `
+					<div class="form-section">
+						<label class="section-label">Guest ${i} Name</label>
+						<div class="name-row">
+						<div class="field">
+							<input type="text" name="guest${i}FirstName">
+							<label class="floating-label">First Name</label>
+						</div>
+						<div class="field">
+							<input type="text" name="guest${i}LastName">
+							<label class="floating-label">Last Name</label>
+						</div>
+						</div>
+					</div>
+					`;
+				}
+			}
 
-/* ===============================
-   FORM SUBMISSION
-================================ */
-document.addEventListener("DOMContentLoaded", () => {
-  const form = document.getElementById("rsvpForm");
+			/* FORM SUBMISSION */
+			document.addEventListener("DOMContentLoaded", () => {
+				const form = document.getElementById("rsvpForm");
 
-  form.addEventListener("submit", async function (e) {
-    e.preventDefault();
+				form.addEventListener("submit", async function (e) {
+					e.preventDefault();
+					
 
-    const payload = {
-      responderFirstName: form.responderFirstName.value,
-      responderLastName: form.responderLastName.value,
-      attending: form.responderAttending.value,
-      guestCount: form.responderAttending.value === "Yes" ? guestCount : 0,
-      guests: collectGuests(form),
-      welcomeParty: form.welcome_party?.value || "",
-      movie: form.movie?.value || "",
-      notes: form.notes?.value || ""
-    };
+					const payload = {
+						responderFirstName: form.responderFirstName.value,
+						responderLastName: form.responderLastName.value,
+						attending: form.responderAttending.value,
+						guestCount: form.responderAttending.value === "Yes" ? guestCount : 0,
+						guests: collectGuests(form),
+						welcomeParty: form.welcome_party?.value || "",
+						movie: form.movie?.value || "",
+						notes: form.notes?.value || ""
+					};
 
-    try {
-      const formData = new URLSearchParams();
-		formData.append("data", JSON.stringify(payload));
+					try {
+						const formData = new URLSearchParams();
+							formData.append("data", JSON.stringify(payload));
 
-		const res = await fetch(
-        "https://script.google.com/macros/s/AKfycbzZ1z5FucUq9_jvEawsjKnNUZqk1ic2mNmYHQrql9MW-2P462_DojiQRgbrB4QG3O6xuQ/exec",
-        {
-          method: "POST",
-    	  body: formData
-        }
-      );
+							const res = await fetch(
+							"https://script.google.com/macros/s/AKfycbzZ1z5FucUq9_jvEawsjKnNUZqk1ic2mNmYHQrql9MW-2P462_DojiQRgbrB4QG3O6xuQ/exec",
+							{
+								method: "POST",
+								body: formData
+							}
+						);
 
-      const text = await res.text();
-      console.log("Server response:", text);
+						const text = await res.text();
+						console.log("Server response:", text);
 
-      showSuccessMessage();
-      form.reset();
+						showSuccessMessage();
+						form.reset();
 
-    } catch (err) {
-      console.error(err);
-      alert("Submission failed. Please try again.");
-    }
-  });
-});
+					} catch (err) {
+						console.error(err);
+						alert("Submission failed. Please try again.");
+					}
+				});
+			});
 
-function collectGuests(form) {
-  const guests = [
-    {
-      first: form.responderFirstName.value,
-      last: form.responderLastName.value
-    }
-  ];
+			function collectGuests(form) {
+			const guests = [
+				{
+				first: form.responderFirstName.value,
+				last: form.responderLastName.value
+				}
+			];
 
-  for (let i = 2; i <= guestCount; i++) {
-    guests.push({
-      first: form[`guest${i}FirstName`]?.value || "",
-      last: form[`guest${i}LastName`]?.value || ""
-    });
-  }
+			for (let i = 2; i <= guestCount; i++) {
+				guests.push({
+				first: form[`guest${i}FirstName`]?.value || "",
+				last: form[`guest${i}LastName`]?.value || ""
+				});
+			}
 
-  return guests;
-}
+			return guests;
+			}
 
-/* ===============================
-   SUCCESS MESSAGE
-================================ */
-function showSuccessMessage() {
-  document.getElementById("rsvpForm").style.display = "none";
-  document.getElementById("successMessage").style.display = "block";
+			function showSuccessMessage() {
+				const overlay = document.getElementById("formOverlay");
+				const formContainer = document.querySelector(".form-container");
 
-  setTimeout(() => {
-    closeForm();
-  }, 3000);
-}
-</script>
+				// Hide the form container completely
+				formContainer.style.display = "none";
+
+				// Make sure overlay is visible
+				overlay.style.display = "flex";
+
+				// Remove any existing success box
+				let existingBox = document.getElementById("submittedBox");
+				if (existingBox) existingBox.remove();
+
+				// Create success box
+				const submittedBox = document.createElement("div");
+				submittedBox.id = "submittedBox";
+
+				// Copy .form-container styling for size and responsiveness
+				submittedBox.style.cssText = `
+					position: fixed;
+					top: 50%;
+					left: 50%;
+					transform: translate(-50%, -50%);
+					width: 820px;
+					max-width: 92vw;
+					max-height: 90vh;
+					overflow-y: auto;
+					background: #fff;
+					padding: 40px 30px 30px;
+					border-radius: 10px;
+					box-shadow: 0 20px 50px rgba(0,0,0,0.4);
+					text-align: center;
+					z-index: 2147483648;
+					opacity: 0;
+					transition: opacity 0.5s ease;
+				`;
+
+				submittedBox.innerHTML = `
+					<h2>Form Submitted!</h2>
+					<p>Thank you for your RSVP.</p>
+					<button onclick="closeForm()" style="font-size:16px; cursor:pointer;">Close</button>
+				`;
+
+				overlay.appendChild(submittedBox);
+
+				// Trigger fade-in
+				requestAnimationFrame(() => {
+					submittedBox.style.opacity = 1;
+				});
 
 
+				setTimeout(() => {
+					closeForm();
+				}, 6000); // closes overlay automatical
+			}
+
+			</script>
 		</script>
-
-			
 	</body>
 </html>
