@@ -357,12 +357,14 @@ document.addEventListener("DOMContentLoaded", () => {
     };
 
     try {
-      const res = await fetch(
-        "https://script.google.com/macros/s/AKfycbxDvQJd2i9KEaCapVKkSUptGegvJolxLwJcA9-yjLBn-0cgIJjylCOQlbSsJIuN0DLFQA/exec",
+      const formData = new URLSearchParams();
+		formData.append("data", JSON.stringify(payload));
+
+		const res = await fetch(
+        "https://script.google.com/macros/s/AKfycbzZ1z5FucUq9_jvEawsjKnNUZqk1ic2mNmYHQrql9MW-2P462_DojiQRgbrB4QG3O6xuQ/exec",
         {
           method: "POST",
-          headers: { "Content-Type": "application/json" },
-          body: JSON.stringify(payload)
+    	  body: formData
         }
       );
 
