@@ -318,7 +318,7 @@ html, body{
 		/*color: #ffffff;*/
 		font-family: "Cedarville Cursive", cursive;
 		font-weight: 700;
-		margin: 0 0 1em 0;
+		margin: 1em 0 1em 0;
 	}
 
 		h1 a, h2 a, h3 a, h4 a, h5 a, h6 a {
@@ -3332,6 +3332,8 @@ html, body{
 
 			.wrapper.striped h1 {
 				color: white;
+				margin: 0.5em !important;
+				z-index: 999999999999999 !important;
 			}
 
 			.wrapper.striped p {

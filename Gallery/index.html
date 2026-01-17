@@ -244,7 +244,7 @@
 			</script>
 
 		<!--RSVP Form -->
-		<script>
+<script>
 /* ===============================
    GLOBAL STATE
 ================================ */
@@ -336,55 +336,10 @@ function renderAdditionalGuests() {
   }
 }
 
-/* ===============================
-   FORM SUBMISSION
-================================ */
-document.addEventListener("DOMContentLoaded", () => {
-  const form = document.getElementById("rsvpForm");
-
-  form.addEventListener("submit", async function (e) {
-    e.preventDefault();
-
-    const payload = {
-      responderFirstName: form.responderFirstName.value,
-      responderLastName: form.responderLastName.value,
-      attending: form.responderAttending.value,
-      guestCount: form.responderAttending.value === "Yes" ? guestCount : 0,
-      guests: collectGuests(form),
-      welcomeParty: form.welcome_party?.value || "",
-      movie: form.movie?.value || "",
-      notes: form.notes?.value || ""
-    };
-
-    try {
-      const res = await fetch(
-        "https://script.google.com/macros/s/AKfycbxDvQJd2i9KEaCapVKkSUptGegvJolxLwJcA9-yjLBn-0cgIJjylCOQlbSsJIuN0DLFQA/exec",
-        {
-          method: "POST",
-          headers: { "Content-Type": "application/json" },
-          body: JSON.stringify(payload)
-        }
-      );
-
-      const text = await res.text();
-      console.log("Server response:", text);
-
-      showSuccessMessage();
-      form.reset();
-
-    } catch (err) {
-      console.error(err);
-      alert("Submission failed. Please try again.");
-    }
-  });
-});
-
+/* Collect guest names */
 function collectGuests(form) {
   const guests = [
-    {
-      first: form.responderFirstName.value,
-      last: form.responderLastName.value
-    }
+    { first: form.responderFirstName.value, last: form.responderLastName.value }
   ];
 
   for (let i = 2; i <= guestCount; i++) {
@@ -397,21 +352,47 @@ function collectGuests(form) {
   return guests;
 }
 
+
 /* ===============================
-   SUCCESS MESSAGE
+   FORM SUBMIT (NO FETCH, NO CORS)
 ================================ */
-function showSuccessMessage() {
-  document.getElementById("rsvpForm").style.display = "none";
-  document.getElementById("successMessage").style.display = "block";
+document.addEventListener("DOMContentLoaded", function () {
+  const form = document.getElementById("rsvpForm");
 
-  setTimeout(() => {
-    closeForm();
-  }, 3000);
-}
+  form.addEventListener("submit", function () {
+    // Serialize guests into hidden field
+    let guests = [];
+    guests.push(
+      `${form.responderFirstName.value} ${form.responderLastName.value}`
+    );
+
+    for (let i = 2; i <= guestCount; i++) {
+      const first = form[`guest${i}FirstName`]?.value || "";
+      const last = form[`guest${i}LastName`]?.value || "";
+      if (first || last) guests.push(`${first} ${last}`);
+    }
+
+    // Create / update hidden input
+    let guestsInput = document.getElementById("guestsInput");
+    if (!guestsInput) {
+      guestsInput = document.createElement("input");
+      guestsInput.type = "hidden";
+      guestsInput.name = "guests";
+      guestsInput.id = "guestsInput";
+      form.appendChild(guestsInput);
+    }
+
+    guestsInput.value = guests.join(", ");
+
+    // Show success message (form posts in hidden iframe)
+    setTimeout(() => {
+      form.style.display = "none";
+      document.getElementById("successMessage").style.display = "block";
+    }, 400);
+  });
+});
+
 </script>
-
-
-		</script>
 
 			
 	</body>
