@@ -2723,10 +2723,13 @@ html, body{
 				border-radius: 5px 5px 0 0;
 				display: block;
 				margin-bottom: 1.75em;
-				margin-left: -1.75em;
-				margin-top: -1.75em;
 				position: relative;
-				width: calc(100% + 3.5em);
+				/*width: calc(100% + 3.5em);
+				margin-left: -1.75em;
+				margin-top: -1.75em;*/
+				width: 100%;
+				margin-left: 0;
+				margin-right: 0;
 			}
 
 				.features article .image img {
@@ -3047,7 +3050,8 @@ html, body{
 		/* prevent page body scroll while menu open */
 		body.nav-open {
 			overflow: hidden;
-			height: 100vh;
+			position: fixed;
+			width: 100%;
 		}
 
 		/* keep hamburger above overlay to allow click-to-close */
@@ -3092,7 +3096,8 @@ html, body{
 		box-shadow: inset 0 0 0 1000px rgba(0,0,0,.2);
 		position: relative;
 		width: 100%;
-		height: 100vh;
+		min-height: 100vh;
+    	height: auto;      /* let content grow if needed */
 		display: flex;
 		align-items: center;
 		justify-content: center;
@@ -3946,10 +3951,6 @@ html, body{
    RSVP FORM STYLES
 ===================================== */
 
-/*.rsvp-form {
-    font-family: Georgia, serif;
-    color: #111;
-}*/
 
 /* Sections */
 .form-section {
