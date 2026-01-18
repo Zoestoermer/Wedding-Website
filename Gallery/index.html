@@ -6,7 +6,7 @@
 -->
 <html lang="en">
 	<head>
-		<title>RSVP</title>
+		<title>Gallary</title>
 		<!-- Favicon -->
 		<link rel="icon" type="image/png" href="/images/Z_C_Favicon.png">
 		<link rel="shortcut icon" href="/images/Z_C_Favicon.png" type="image/png">
@@ -49,164 +49,54 @@
 						<div class="wrapper light">
 							<div class="content">
 								<div>
-									<h1 style="text-align: center; ">RSVP</h1>
-									<p>If you know you are unable to attend, please let us know ASAP. Thank you!</p>
+									<h2 style="text-align: center; ">Gallary</h2>
 									
-									<button style="text-transform: uppercase; font-family: 'Courier New', Courier, monospace;" class="open-btn" onclick="openForm()">Let us know if you can make it!</button>
+									<div class="gallery-grid">
+										<img src="/images/proposal3.JPG">
+										<img src="/images/proposal2.JPG">
+										<img src="/images/proposal1.JPG">
+										<img src="/images/proposal4.JPG">
+										<img src="/images/proposal6.JPG">
+										<img src="/images/proposal7.JPG">
+										<img src="/images/proposal8.JPG">
+										<img src="/images/proposal9.JPG">
+										<img src="/images/proposal10.JPG">
+										<img src="/images/proposal5.JPG">
 
-									<!-- Overlay & Form -->
-									<div class="overlay" id="formOverlay" onclick="closeForm(event)">
-										<div class="form-container">
-											<span class="close-x" onclick="closeForm()">✕</span>
+										<img src="/images/proposal parents.JPG">
+										<img src="/images/proposal Stoermer parents.JPG">
+										<img src="/images/proposal Watson parents.JPG">
+										<img src="/images/proposal Watson Fam.JPG">
+										<img src="/images/proposal Stoermer Fam.JPG">
 
-											<h2>RSVP</h2>
+										<img src="/images/b4 proposal.JPG">
+										<img src="/images/c+z2022.jpeg">
+										<img src="/images/hawaii.JPG">
+										<img src="/images/zoe proposing.JPG">
+										<img src="/images/yosemite.JPG">
+										<img src="/images/yosemite2.JPG">
+									</div>
+									
+								</div>
+							</div>
+						</div>
 
-											<form class="rsvp-form" id="rsvpForm">
-
-											<!-- Responder Name -->
-											<div class="form-section">
-												<label class="section-label">
-												Name <span style="font-size:x-small;">(required)</span>
-												</label>
-
-												<div class="name-row">
-												<div class="field">
-													<input type="text" name="responderFirstName" required>
-													<label class="floating-label">First Name</label>
-												</div>
-
-												<div class="field">
-													<input type="text" name="responderLastName" required>
-													<label class="floating-label">Last Name</label>
-												</div>
-												</div>
-											</div>
-
-											<!-- Attendance + Guest Count (side-by-side) -->
-											<div class="attendance-row">
-
-												<!-- Attendance -->
-												<div class="form-section">
-												<label class="section-label">
-													Will you be attending? <span style="font-size:x-small;">(required)</span>
-												</label>
-
-												<div class="radio-group">
-													<label class="radio-option">
-													<input type="radio" name="responderAttending" value="Yes" required onchange="handleAttendanceChange()">
-													<span class="custom-radio"></span> Yes
-													</label>
-
-													<label class="radio-option">
-													<input type="radio" name="responderAttending" value="No" onchange="handleAttendanceChange()">
-													<span class="custom-radio"></span> No
-													</label>
-												</div>
-												</div>
-
-												<!-- Guest Count -->
-												<div class="form-section" id="guestCountSection" style="display:none;">
-												<label class="section-label">
-													Total guests attending <span style="font-size:x-small;">If listed on invitation</span>
-												</label>
-
-												<div class="guest-counter">
-													<button type="button" onclick="changeGuestCount(-1)">−</button>
-													<span id="guestCount">1</span>
-													<button type="button" onclick="changeGuestCount(1)">+</button>
-												</div>
-
-												<input type="hidden" name="guestCount" id="guestCountInput" value="1">
-												</div>
-
-											</div>
-
-											<!-- Sorry Message -->
-											<div class="form-section" id="sorryMessage" style="display:none; text-align:center;">
-												<label>
-												We’re so sorry to miss you, thank you for letting us know ❤
-												</label>
-											</div>
-
-											<!-- ATTENDING ONLY -->
-											<div id="attendingOnlySection" style="display:none;">
-
-												<!-- Additional Guests -->
-												<div id="additionalGuests"></div>
-
-												<!-- Welcome Party + Movie (side-by-side) -->
-												<div class="attendance-row">
-
-												<!-- Welcome Party -->
-												<div class="form-section">
-													<label class="section-label">
-													Will you be attending the welcome party?
-													</label>
-
-													<div class="radio-group">
-													<label class="radio-option">
-														<input type="radio" name="welcome_party" value="Yes">
-														<span class="custom-radio"></span> Yes
-													</label>
-
-													<label class="radio-option">
-														<input type="radio" name="welcome_party" value="No">
-														<span class="custom-radio"></span> No
-													</label>
-													</div>
-												</div>
-
-												<!-- Movie Choice -->
-												<div class="form-section">
-													<label class="section-label">
-													Movie preference during the welcome party
-													</label>
-
-													<div class="radio-group">
-													<label class="radio-option">
-														<input type="radio" name="movie" value="Option A">
-														<span class="custom-radio"></span> Option A
-													</label>
-													<label class="radio-option">
-														<input type="radio" name="movie" value="Option B">
-														<span class="custom-radio"></span> Option B
-													</label>
-													<label class="radio-option">
-														<input type="radio" name="movie" value="Option C">
-														<span class="custom-radio"></span> Option C
-													</label>
-													<label class="radio-option">
-														<input type="radio" name="movie" value="Option D">
-														<span class="custom-radio"></span> Option D
-													</label>
-													</div>
-												</div>
-
-												</div>
-
-												<!-- Dietary Notes -->
-												<div class="form-section">
-												<label class="section-label">Dietary restrictions or notes</label>
-												<div class="field">
-													<input type="text" name="notes">
-												</div>
-												</div>
-
-											</div>
-
-											<div class="submit-wrapper">
-												<button type="submit" class="submit-btn">Submit</button>
-											</div>
-
-
-											<div id="successMessage" style="display:none; text-align:center;">
-											<h3>Thank you!</h3>
-											<p>Your RSVP has been received</p>
-											</div>
-
-											</form>
-											</div>
-										</div>
+						<!-- Pre-footer info -->
+						<div class="wrapper solid">
+							<div class="content">
+								<div class="inner" style="text-align: center; min-height: auto;">
+									<div style="padding-bottom: 25px;">
+										<h4>Location</h4>
+										<p style="text-decoration: underline;">AutoCamp Yosemite</p>
+									</div>
+									<div style="padding-bottom: 25px;">
+										<h4>Date</h4>
+										<p>July 18<sup>TH</sup>, 2026</p>
+									</div>
+									<div >
+										<a href="/RSVP/"><h4 style="text-decoration: underline;">RSVP</h4></a>
+									</div>
+									
 								</div>
 							</div>
 						</div>

@@ -1,0 +1,289 @@
+<!DOCTYPE HTML>
+<!--
+	Solid State by HTML5 UP
+	html5up.net | @ajlkn
+	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
+-->
+<html lang="en">
+	<head>
+		<title>Gallary</title>
+		<!-- Favicon -->
+		<link rel="icon" type="image/png" href="/images/Z_C_Favicon.png">
+		<link rel="shortcut icon" href="/images/Z_C_Favicon.png" type="image/png">
+		<link rel="apple-touch-icon" href="/assets/images/Z_C_Favicon.png">
+
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+
+		<!-- CSS -->
+		<link rel="stylesheet" href="/assets/css/main.css" />
+		<noscript><link rel="stylesheet" href="/assets/css/noscript.css" /></noscript>
+	</head>
+	<body class="is-preload">
+
+		<!-- Page Wrapper -->
+			<div id="page-wrapper">
+
+				<!-- Header -->
+					<header id="header">
+						<div class="header-container">
+							<button class="menu-toggle">☰</button>
+
+							<img src="/images/Z_C_Favicon.png" alt="Logo" class="header-logo" />
+							
+							<p class="nav-links">
+								<a href="/index.html">Home</a> &nbsp;&nbsp;&nbsp;
+								<a href="#.html">Travel</a> &nbsp;&nbsp;&nbsp;
+								<a href="#.html">Schedule</a> &nbsp;&nbsp;&nbsp;
+								<a href="#.html">FAQs</a> &nbsp;&nbsp;&nbsp;
+								<a href="/RSVP/" class="rsvp-link">RSVP</a>
+
+        					</p>
+
+							<p><a href="/RSVP/" class="rsvp-button">RSVP</a></p>
+							
+						</div>						
+					
+					</header>
+
+						<div class="wrapper light">
+							<div class="content">
+								<div>
+									<h2 style="text-align: center; ">Gallary</h2>
+									
+									<div class="gallery-grid">
+										<img src="/images/proposal3.JPG">
+										<img src="/images/proposal2.JPG">
+										<img src="/images/proposal1.JPG">
+										<img src="/images/proposal4.JPG">
+										<img src="/images/proposal6.JPG">
+										<img src="/images/proposal7.JPG">
+										<img src="/images/proposal8.JPG">
+										<img src="/images/proposal9.JPG">
+										<img src="/images/proposal10.JPG">
+										<img src="/images/proposal5.JPG">
+
+										<img src="/images/proposal parents.JPG">
+										<img src="/images/proposal Stoermer parents.JPG">
+										<img src="/images/proposal Watson parents.JPG">
+										<img src="/images/proposal Watson Fam.JPG">
+										<img src="/images/proposal Stoermer Fam.JPG">
+
+										<img src="/images/b4 proposal.JPG">
+										<img src="/images/c+z2022.jpeg">
+										<img src="/images/hawaii.JPG">
+										<img src="/images/zoe proposing.JPG">
+										<img src="/images/yosemite.JPG">
+										<img src="/images/yosemite2.JPG">
+									</div>
+									
+								</div>
+							</div>
+						</div>
+
+						<!-- Pre-footer info -->
+						<div class="wrapper solid">
+							<div class="content">
+								<div class="inner" style="text-align: center; min-height: auto;">
+									<div style="padding-bottom: 25px;">
+										<h4>Location</h4>
+										<p style="text-decoration: underline;">AutoCamp Yosemite</p>
+									</div>
+									<div style="padding-bottom: 25px;">
+										<h4>Date</h4>
+										<p>July 18<sup>TH</sup>, 2026</p>
+									</div>
+									<div >
+										<a href="/RSVP/"><h4 style="text-decoration: underline;">RSVP</h4></a>
+									</div>
+									
+								</div>
+							</div>
+						</div>
+								
+					</section>
+
+				<!-- Footer -->
+					<section id="footer">
+						<div class="inner">
+							<img src="/images/Z_C_Favicon.png" alt="" class="footer-logo"/>
+						</div>
+					</section>
+
+			</div>
+
+		<!-- Scripts -->
+			<script src="/assets/js/jquery.min.js"></script>
+			<script src="/assets/js/jquery.scrollex.min.js"></script>
+			<script src="/assets/js/browser.min.js"></script>
+			<script src="/assets/js/breakpoints.min.js"></script>
+			<script src="/assets/js/util.js"></script>
+			<script src="/assets/js/main.js"></script>
+			<script>
+				document.addEventListener('DOMContentLoaded', function () {
+					const toggle = document.querySelector('.menu-toggle');
+					if (!toggle) return;
+
+					toggle.addEventListener('click', function () {
+						document.body.classList.toggle('nav-open');
+
+						const expanded = toggle.getAttribute('aria-expanded') === 'true';
+						toggle.setAttribute('aria-expanded', String(!expanded));
+					});
+				});
+			</script>
+
+		<!--RSVP Form -->
+<script>
+/* ===============================
+   GLOBAL STATE
+================================ */
+let guestCount = 1;
+const maxGuests = 6;
+
+/* ===============================
+   MODAL CONTROLS
+================================ */
+function openForm() {
+  document.getElementById("formOverlay").style.display = "flex";
+  document.body.classList.add("no-scroll");
+}
+
+function closeForm(event) {
+  if (!event || event.target?.id === "formOverlay") {
+    document.getElementById("formOverlay").style.display = "none";
+    document.body.classList.remove("no-scroll");
+
+    document.getElementById("rsvpForm").style.display = "block";
+    document.getElementById("successMessage").style.display = "none";
+  }
+}
+
+/* ===============================
+   ATTENDANCE LOGIC
+================================ */
+function handleAttendanceChange() {
+  const attending = document.querySelector(
+    'input[name="responderAttending"]:checked'
+  )?.value;
+
+  const attendingSection = document.getElementById("attendingOnlySection");
+  const guestCountSection = document.getElementById("guestCountSection");
+  const sorryMessage = document.getElementById("sorryMessage");
+  const additionalGuests = document.getElementById("additionalGuests");
+
+  if (attending === "Yes") {
+    attendingSection.style.display = "block";
+    guestCountSection.style.display = "block";
+    sorryMessage.style.display = "none";
+    renderAdditionalGuests();
+  } else {
+    attendingSection.style.display = "none";
+    guestCountSection.style.display = "none";
+    sorryMessage.style.display = "block";
+
+    guestCount = 1;
+    document.getElementById("guestCount").textContent = "1";
+    document.getElementById("guestCountInput").value = "1";
+    additionalGuests.innerHTML = "";
+
+    document
+      .querySelectorAll('input[name="welcome_party"], input[name="movie"]')
+      .forEach(i => i.checked = false);
+  }
+}
+
+/* ===============================
+   GUEST COUNTER
+================================ */
+function changeGuestCount(amount) {
+  guestCount = Math.min(Math.max(1, guestCount + amount), maxGuests);
+  document.getElementById("guestCount").textContent = guestCount;
+  document.getElementById("guestCountInput").value = guestCount;
+  renderAdditionalGuests();
+}
+
+function renderAdditionalGuests() {
+  const container = document.getElementById("additionalGuests");
+  container.innerHTML = "";
+
+  for (let i = 2; i <= guestCount; i++) {
+    container.innerHTML += `
+      <div class="form-section">
+        <label class="section-label">Guest ${i} Name</label>
+        <div class="name-row">
+          <div class="field">
+            <input type="text" name="guest${i}FirstName">
+            <label class="floating-label">First Name</label>
+          </div>
+          <div class="field">
+            <input type="text" name="guest${i}LastName">
+            <label class="floating-label">Last Name</label>
+          </div>
+        </div>
+      </div>
+    `;
+  }
+}
+
+/* Collect guest names */
+function collectGuests(form) {
+  const guests = [
+    { first: form.responderFirstName.value, last: form.responderLastName.value }
+  ];
+
+  for (let i = 2; i <= guestCount; i++) {
+    guests.push({
+      first: form[`guest${i}FirstName`]?.value || "",
+      last: form[`guest${i}LastName`]?.value || ""
+    });
+  }
+
+  return guests;
+}
+
+
+/* ===============================
+   FORM SUBMIT (NO FETCH, NO CORS)
+================================ */
+document.addEventListener("DOMContentLoaded", function () {
+  const form = document.getElementById("rsvpForm");
+
+  form.addEventListener("submit", function () {
+    // Serialize guests into hidden field
+    let guests = [];
+    guests.push(
+      `${form.responderFirstName.value} ${form.responderLastName.value}`
+    );
+
+    for (let i = 2; i <= guestCount; i++) {
+      const first = form[`guest${i}FirstName`]?.value || "";
+      const last = form[`guest${i}LastName`]?.value || "";
+      if (first || last) guests.push(`${first} ${last}`);
+    }
+
+    // Create / update hidden input
+    let guestsInput = document.getElementById("guestsInput");
+    if (!guestsInput) {
+      guestsInput = document.createElement("input");
+      guestsInput.type = "hidden";
+      guestsInput.name = "guests";
+      guestsInput.id = "guestsInput";
+      form.appendChild(guestsInput);
+    }
+
+    guestsInput.value = guests.join(", ");
+
+    // Show success message (form posts in hidden iframe)
+    setTimeout(() => {
+      form.style.display = "none";
+      document.getElementById("successMessage").style.display = "block";
+    }, 400);
+  });
+});
+
+</script>
+
+			
+	</body>
+</html>

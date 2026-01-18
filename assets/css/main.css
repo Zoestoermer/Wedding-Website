@@ -3332,19 +3332,18 @@ html, body{
 			background: linear-gradient(rgba(161, 175, 202, 0.637), rgba(161, 175, 202, 0.637/*light yellow-white - transparent*/)), url("images/blue_stripes.png") right top / auto repeat;
 			color: white;
 			position: relative;
-			padding: 0 0;
 		}
 
 			.wrapper.striped h1 {
+				position: relative;
 				color: white;
 				margin: 0.5em !important;
-				z-index: 999999999999999 !important;
+				z-index: 12 !important;
 			}
 
 			.wrapper.striped p {
 				text-align: center;
 				color: white
-				/*font-size: 1.3em;*/
 			}
 			
 			.wrapper.striped h2{
@@ -3380,10 +3379,10 @@ html, body{
 			.wrapper.striped::before {
 				content: "";
 				position: absolute;
-				top: -12em !important;
+				top: -13em !important;
 				left: 0;
 				width: 100%;
-				height: 12em; /* wave height */
+				height: 10em; /* wave height */
 				-webkit-mask: url("data:image/svg+xml;charset=utf8,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100' preserveAspectRatio='none'%3E%3Cpath d='M0 60 C 15 10, 30 90, 50 60 C 70 30, 85 90, 100 60 L100 105 L0 105 Z' /%3E%3C/svg%3E") right top / cover repeat;
 				-webkit-mask-repeat: repeat;
 				-webkit-mask-size: cover;
@@ -3416,30 +3415,42 @@ html, body{
 				background-clip: content-box;
 			}
 
-			/* On medium screens, push it a bit lower */
-			@media (min-width: 600px) {
-				.wrapper.striped img {
-					max-width: 85%;
+			@media (max-width: 599px) {
+				.wrapper.striped::before {
+					top: -4em; 
 				}
 			}
 
 			@media (min-width: 900px) {
+				.wrapper.striped img {
+					max-width: 65%;
+				}
 				.wrapper.striped::before {
-					top: -12em;
+					top: -6em;
 					height: 12em;
+				}
+			}
+
+			@media (min-width: 600px) {
+				.wrapper.striped img {
+					max-width: 85%;
+				}
+				.wrapper.striped::before {
+					top: -8em;
+					height: 14em;
 				}
 			}
 
 			@media (min-width: 1300px) {
 				.wrapper.striped::before {
-					top: -15em;
+					top: -10em;
 					height: 16em;
 				}
 			}
 
 		.wrapper.light {
 			background-color: rgb(247, 241, 231); 
-			padding: 5em 0 4em 0;
+			padding: 3em 0 0 0;
 			display: flex; 
 			flex-direction: column;
 			align-items: center;  
@@ -3587,6 +3598,59 @@ html, body{
 				background-origin: border-box;
 				background-clip: content-box;
 			}
+
+			.gallery-grid {
+				display: grid;
+				grid-template-columns: repeat(3, minmax(0, 1fr));
+				gap: 2em;
+
+				max-width:1100px;
+				margin: 0 auto 2em;
+
+				justify-items: center;
+			}
+
+				.wrapper.striped .gallery-grid img {
+					width: 100%;
+					max-width: 460px;
+					height: auto;
+
+					display: block;
+					border-radius: 15%;
+					object-fit: cover;
+				}
+				
+				.wrapper.light .gallery-grid img {
+					width: 100%;
+					max-width: 460px;
+
+					aspect-ratio: 4 / 3;   /* 👈 pick your ratio */
+					height: auto;
+
+					object-fit: cover;     /* crops evenly */
+					border-radius: 15%;
+					display: block;
+				}
+
+				@media (max-width: 900px) {
+					.gallery-grid {
+						grid-template-columns: repeat(2, 1fr); /* 2 across */
+						max-width: 800px;
+					}
+				}
+
+				@media (max-width: 600px) {
+					.gallery-grid {
+						grid-template-columns: 1fr; /* 1 across */
+						max-width: 90%;
+					}
+
+					.wrapper.striped .gallery-grid img,
+					.wrapper.light .gallery-grid img {
+						max-width: 100%;
+					}
+				}
+						
 
 /* ============== CONTACTS ============== */
 			.contacts {
@@ -4192,31 +4256,43 @@ html, body{
     transform: translate(-50%, -50%);
 }
 
-/*.checkbox-group label {
-    display: block;
-    font-size: 16px;
-    margin-bottom: 10px;
-    cursor: pointer;
+	/* MOBILE REFINEMENTS */
+
+	@media (max-width: 600px) {
+		.name-row {
+			flex-direction: column;
+			gap: 10x;
+		}
+
+		.form-container {
+			padding: 20px 10px 15px;
+		}
+	}
+
+/* Pre-footer layout */
+.prefooter-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr); /* 3 across */
+    gap: 0.75em;
+    text-align: center;
+    align-items: center;
+	max-width: 1000px;
+    margin: 0 auto;
+	font-size: 0.9em;
 }
 
-.checkbox-group input {
-    margin-right: 8px;
-}*/
+	/* Spacing consistency */
+	.prefooter-grid > div {
+		padding: .25em 0;
+	}
 
-/* =====================================
-   MOBILE REFINEMENTS
-===================================== */
-
-@media (max-width: 600px) {
-    .name-row {
-        flex-direction: column;
-        gap: 20px;
-    }
-
-    .form-container {
-        padding: 30px 20px 25px;
-    }
-}
+	/* ↓ Mobile: stack vertically */
+	@media (max-width: 700px) {
+		.prefooter-grid {
+			grid-template-columns: 1fr; /* single column */
+			gap: 1.5em;
+		}
+	}
 
 
 /* ==================================== Footer ==================================== */
@@ -4227,12 +4303,14 @@ html, body{
 		left: 0;
 		width: 100%;
 		overflow: hidden;
+		padding-top: 3em;
+		margin-top: -3em;
 	}
 	
 	#footer::before {
 		content: "";
 		position: absolute;
-		top: -50px;
+		top: -20px;
 		left: 0;
 		width: 100%;
 		height: 12em; /* wave height */
@@ -4271,6 +4349,7 @@ html, body{
 		height: auto;    
 		display: block;
 		margin: 0 auto; 
+		padding-bottom: 1em;
 	}			
 
 	@media screen and (max-width: 1280px) {
@@ -4279,8 +4358,8 @@ html, body{
 			background: linear-gradient(rgba(161, 175, 202, 0.637), rgba(161, 175, 202, 0.637/*light yellow-white - transparent*/)), url("images/blue_stripes.png") right top / auto repeat;
 			background-size: auto, cover;
 			background-position: center, center;
-			margin-top: -6.5em;
-			padding-top: 6.5em;
+			margin-top: -3.5em;
+			padding-top: 2em;
 		}
 
 	}
