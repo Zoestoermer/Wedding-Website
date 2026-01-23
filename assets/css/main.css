@@ -4345,6 +4345,18 @@ html, body{
 	}
 
 /* Pre-footer layout */
+.wrapper.prefooter {
+    padding-bottom: -1em;
+}
+
+.prefooter-grid p {
+    margin-bottom:-1em;
+}
+
+.wrapper.prefooter .inner {
+    padding: 1em 0 0.25em 0;
+}
+
 .prefooter-grid {
     display: grid;
     grid-template-columns: repeat(3, 1fr); /* 3 across */
