@@ -409,6 +409,28 @@ html, body{
 			margin: 4em 0;
 		}
 
+		hr.wavy {
+			border: none;
+			height: 26px; /* slightly taller = more wave */
+			margin: 2.5em 0;
+			background: none;
+			position: relative;
+		}
+
+		hr.wavy::before {
+			content: "";
+			position: absolute;
+			inset: 0;
+			background: url("data:image/svg+xml;charset=utf8,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 20' preserveAspectRatio='none'%3E%3Cpath d='M0 10 Q 12.5 -3 25 10 T 50 10 T 75 10 T 100 10' fill='none' stroke='rgba(255,255,255,0.125)' stroke-width='2'/%3E%3C/svg%3E")
+				center / 100% 100% no-repeat;
+			opacity: 1;
+		}
+
+		.wrapper.light hr.wavy::before {
+			background: url("data:image/svg+xml;charset=utf8,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 20' preserveAspectRatio='none'%3E%3Cpath d='M0 10 Q 12.5 -3 25 10 T 50 10 T 75 10 T 100 10' fill='none' stroke='rgba(0,0,0,0.15)' stroke-width='2'/%3E%3C/svg%3E")
+				center / 100% 100% no-repeat;
+		}
+
 	.align-left {
 		text-align: left;
 	}
@@ -3445,17 +3467,23 @@ html, body{
 
 		.wrapper.light {
 			background-color: rgb(247, 241, 231); 
-			padding: 3em 0 0 0;
+			padding: 3em 5em 0 5em;
 			display: flex; 
 			flex-direction: column;
 			align-items: center;  
 			justify-content: center; 
 		}
 
-			.wrapper.light h2, .wrapper.light h4, .wrapper.light p{
+			.wrapper.light h4, .wrapper.light p{
 				color: black;
 				text-align: center;
 				padding: 0 2em;
+			}
+
+			.wrapper.light h2{
+				color: black;
+				text-align: center;
+				margin: 10px;
 			}
 
 			.wrapper.light a{
@@ -3472,7 +3500,7 @@ html, body{
 				object-fit: contain;
 			}
 
-			.wrapper.light button{
+			.wrapper.light button, .wrapper.imp-large a{
 				color: #798db9 !important;
 				font-family:  "Cedarville Cursive", cursive;
 				background-color: transparent;

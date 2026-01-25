@@ -6,6 +6,7 @@
 -->
 <html lang="en">
 	<head>
+		<title>Travel</title>
 		<!-- Favicon -->
 		<link rel="icon" type="image/png" href="/images/Z_C_Favicon.png">
 		<link rel="shortcut icon" href="/images/Z_C_Favicon.png" type="image/png">
@@ -39,23 +40,34 @@
         					</p>
 
 							<p><a href="/RSVP/" class="rsvp-button">RSVP</a></p>
-						</div>					
+						</div>						
+					
 					</header>
 
-						<div class="wrapper solid">
-							<div class="content">
-								<div>
-									<p style="text-align: center; padding: 2em 2em; color:white;">Your presence is the greatest gift we could ask for, and we truly mean that! 
-									</br>Between the travel expenses, PTO, and three days of your time dedicated to us, we are incredibly grateful and do not expect anything beyond that.</p>
+						<div class="wrapper striped">
+							<div>
+									<h2 style="text-align: center; ">Travel</h2>
 								</div>
-								<div class="embedSite">
+						</div>
 
-									<embed src="https://www.honeyfund.com/site/stoermer-watson-07-18-2026">
-																		
+						<div class="wrapper light">
+							<div class="content" style="padding: 0 8em 0;">
+								<div>
+									<h4 style="text-align: left;">
+										Who can I bring to the wedding?
+									</h4>
+									<p style="text-align: left;">
+										We kindly ask that only those who are explicitly addressed on your invite attend the wedding. If you are not sure, please reach out to Colin or Zoe!
+									</p>
+
 								</div>
+
+								<hr class="wavy">
+
+								
 							</div>
 						</div>
-								
+
 						<!-- Pre-footer info -->
 						<div class="wrapper solid prefooter">
 							<div class="content">
@@ -81,6 +93,7 @@
 								</div>
 							</div>
 						</div>
+								
 					</section>
 
 				<!-- Footer -->
@@ -93,12 +106,12 @@
 			</div>
 
 		<!-- Scripts -->
-			<script src="assets/js/jquery.min.js"></script>
-			<script src="assets/js/jquery.scrollex.min.js"></script>
-			<script src="assets/js/browser.min.js"></script>
-			<script src="assets/js/breakpoints.min.js"></script>
-			<script src="assets/js/util.js"></script>
-			<script src="assets/js/main.js"></script>
+			<script src="/assets/js/jquery.min.js"></script>
+			<script src="/assets/js/jquery.scrollex.min.js"></script>
+			<script src="/assets/js/browser.min.js"></script>
+			<script src="/assets/js/breakpoints.min.js"></script>
+			<script src="/assets/js/util.js"></script>
+			<script src="/assets/js/main.js"></script>
 			<script>
 				document.addEventListener('DOMContentLoaded', function () {
 					const toggle = document.querySelector('.menu-toggle');
@@ -111,29 +124,6 @@
 						toggle.setAttribute('aria-expanded', String(!expanded));
 					});
 				});
-			</script>
-
-			<script>
-				var countDownDate = new Date("Jul 18, 2026 18:00:00").getTime();
-				// Update the count down every 1 second
-				var x = setInterval(function() {
-				// Get today's date and time
-				var now = new Date().getTime();
-				// Find the distance between now and the count down date
-				var distance = countDownDate - now;
-				// Time calculations for days, hours, and minutes 
-				var days = Math.floor(distance / (1000 * 60 * 60 * 24));
-				var hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-				var minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
-				// Display the result in the element with id="demo"
-				document.getElementById("countdown").innerHTML = days + " days " + hours + " hours "
-				+ minutes + " minutes ";
-				// If the count down is finished, write some text
-				if (distance < 0) {
-					clearInterval(x);
-					document.getElementById("countdown").innerHTML = "IT'S TIME TO GET MARRIED";
-				}
-				}, 1000);
 			</script>
 	</body>
 </html>
