@@ -2845,15 +2845,15 @@ html, body{
 		.rsvp-button {
 			display: inline-flex;
 			padding: 0.2em .8em;        
-			border: 1px solid #2d3a69; /* outline */
-			color: #2d3a69;            /*  text */
+			border: 1px solid #2d3a69;
+			color: #2d3a69; 
 			background: transparent;
-			border-radius: 6px;        /* rounded corners */
-			font-size: 1rem;         /* slightly smaller text */
+			border-radius: 6px; /* rounded corners */
+			font-size: 1rem;
 			font-weight: 400;
 			text-decoration: none;
 			transition: all 0.3s ease;
-			line-height: 1;            /* keeps text compact */
+			line-height: 1;  /* keeps text compact */
 			z-index: 1000;
 			margin-left: 1em;
 			align-items: center;
@@ -2864,9 +2864,9 @@ html, body{
 
 		/* Hover effect */
 		.rsvp-button:hover {
-			background: #2d3a69;  /* blue fill */
-			color: white;         /* white text */
-			border: 1px solid #2d3a69; /* outline */
+			background: #2d3a69; 
+			color: white;      
+			border: 1px solid #2d3a69; 
 		}
 
 		#header p a{
@@ -3050,7 +3050,7 @@ html, body{
 			padding: 5rem 1rem;
 			gap: .2rem;
 			z-index: 10000;  /* under the hamburger (10001) */
-			background: linear-gradient(rgba(161, 175, 202, 0.637), rgba(161, 175, 202, 0.637/*light yellow-white - transparent*/)), url("images/blue_stripes.png") right top / auto repeat;
+			background: linear-gradient(rgba(161, 175, 202, 0.637), rgba(161, 175, 202, 0.637)), url("images/blue_stripes.png") right top / auto repeat;
 		}
 
 		/* style the links inside overlay */
@@ -3346,28 +3346,25 @@ html, body{
 		}
 
 		.wrapper.striped {
-			background: linear-gradient(rgba(161, 175, 202, 0.637), rgba(161, 175, 202, 0.637/*light yellow-white - transparent*/)), url("images/blue_stripes.png") right top / auto repeat;
-			color: white;
+			background: linear-gradient(rgba(161, 175, 202, 0.637), rgba(161, 175, 202, 0.637)), url("images/blue_stripes.png") right top / auto repeat;
+			color:  #2d3a69 !important;;
 			position: relative;
 		}
 
 			.wrapper.striped h1 {
 				position: relative;
-				color: white;
 				margin: 0.5em !important;
 				z-index: 12 !important;
 			}
 
 			.wrapper.striped p {
 				text-align: center;
-				color: white
 			}
 			
 			.wrapper.striped h2{
 				text-align: center;
 				z-index: 1000;
 				position: relative;
-				color: white;
 			}
 
 			.wrapper.striped h3{
@@ -3375,7 +3372,11 @@ html, body{
 				margin: -25px auto 10px auto !important;
 				z-index: 1000;
 				position: relative;
-				color: white;
+			}
+
+			.wrapper.striped a {
+				position: relative;
+				color: #2d3a69;
 			}
 
 			.wrapper.striped img{
@@ -3391,15 +3392,16 @@ html, body{
 				text-decoration-color: white !important;
 				text-decoration: underline;
 				text-underline-offset: 5px;
+				color: white !important;
 			}
 
 			.wrapper.striped::before {
 				content: "";
 				position: absolute;
-				top: -13em !important;
+				top: -13em;
 				left: 0;
 				width: 100%;
-				height: 10em; /* wave height */
+				height: 12em; /* wave height */
 				-webkit-mask: url("data:image/svg+xml;charset=utf8,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100' preserveAspectRatio='none'%3E%3Cpath d='M0 60 C 15 10, 30 90, 50 60 C 70 30, 85 90, 100 60 L100 105 L0 105 Z' /%3E%3C/svg%3E") right top / cover repeat;
 				-webkit-mask-repeat: repeat;
 				-webkit-mask-size: cover;
@@ -3432,9 +3434,10 @@ html, body{
 				background-clip: content-box;
 			}
 
-			@media (max-width: 599px) {
+			@media (min-width: 1300px) {
 				.wrapper.striped::before {
-					top: -4em; 
+					top: -16em;
+					height: 18em;
 				}
 			}
 
@@ -3443,8 +3446,8 @@ html, body{
 					max-width: 65%;
 				}
 				.wrapper.striped::before {
-					top: -6em;
-					height: 12em;
+					top: -15em;
+					height: 16em;
 				}
 			}
 
@@ -3453,17 +3456,18 @@ html, body{
 					max-width: 85%;
 				}
 				.wrapper.striped::before {
-					top: -8em;
+					top: -13em;
 					height: 14em;
 				}
 			}
 
-			@media (min-width: 1300px) {
+			@media (max-width: 599px) {
 				.wrapper.striped::before {
-					top: -10em;
-					height: 16em;
+					top: -9em; 
+					height: 10em;
 				}
 			}
+
 
 		.wrapper.light {
 			background-color: rgb(247, 241, 231); 
@@ -3487,7 +3491,8 @@ html, body{
 			}
 
 			.wrapper.light a{
-				color: black;
+				/*color: black;*/
+				color: #798db9 ;
 				text-decoration: underline;
 			}
 
@@ -3527,10 +3532,10 @@ html, body{
 			.wrapper.light:after {
 				content: "";
 				position: absolute;
-				bottom: -12em;
+				bottom: -17em;
 				left: 0;
 				width: 100%;
-				height: 12em; /* wave height */
+				height: 16em; /* wave height */
 				-webkit-mask: url("data:image/svg+xml;charset=utf8,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100' preserveAspectRatio='none'%3E%3Cpath d='M0 60 C 15 10, 30 90, 50 60 C 70 30, 85 90, 100 60 L100 105 L0 105 Z' /%3E%3C/svg%3E") right top / cover repeat;
 				-webkit-mask-repeat: repeat;
 				-webkit-mask-size: cover;
@@ -3538,29 +3543,45 @@ html, body{
 				mask-repeat: repeat;
 				mask-size: cover;
 				background: inherit;
-				z-index: 20;
+				z-index: 19;
 				background-origin: border-box;
 				background-clip: content-box;
 			}
 
-			@media (min-width: 700px) {
+			@media (max-width: 1500px) {
 				.wrapper.light:after {
-					bottom: -14em;
-					height: 12em;
+					bottom: -19em;
+					height: 16em;
 				}
 			}
 
-			@media (min-width: 900px) {
+			@media (max-width: 1200px) {
 				.wrapper.light:after {
 					bottom: -16em;
+					height: 14em;
+				}
+			}
+
+			@media (max-width: 900px) {
+				.wrapper.light:after {
+					bottom: -13em;
 					height: 12em;
 				}
 			}
 
-			@media (min-width: 1200px) {
+			@media (max-width: 700px) {
 				.wrapper.light:after {
-					bottom: -18em;
-					height: 16em;
+					bottom: -11em;
+					height: 10em;
+				}
+				.wrapper.light h4, .wrapper.light p, .wrapper.light h2{
+					padding: 1em 0.25em;
+				}
+			}
+
+			@media (max-width: 599px) {
+				.wrapper.light h4, .wrapper.light p, .wrapper.light h2{
+					padding: 1em 0.25em;
 				}
 			}
 
@@ -3569,6 +3590,7 @@ html, body{
 			display: flex;             
 			flex-direction: row !important; /*stack items*/
 			padding: 5em 0 1em 0;
+			position: relative;
 		}
 
 			.wrapper.solid h2{
@@ -3581,6 +3603,7 @@ html, body{
 				color: rgb(255, 255, 255) !important;
 				text-align: center;
 				padding: 0 2em;
+				max-width: 1000px;
 			}
 
 			.wrapper.solid h4{
@@ -4402,10 +4425,10 @@ html, body{
 	}
 
 	/* ↓ Mobile: stack vertically */
-	@media (max-width: 700px) {
+	@media (max-width: 600px) {
 		.prefooter-grid {
 			grid-template-columns: 1fr; /* single column */
-			gap: 1.5em;
+			gap: 2em;
 		}
 	}
 
@@ -4413,7 +4436,7 @@ html, body{
 /* ==================================== Footer ==================================== */
 
 	#footer{
-		background: linear-gradient(rgba(161, 175, 202, 0.637), rgba(161, 175, 202, 0.637/*light yellow-white - transparent*/)), url("images/blue_stripes.png") right top / auto repeat;
+		background: linear-gradient(rgba(161, 175, 202, 0.637), rgba(161, 175, 202, 0.637)), url("images/blue_stripes.png") right top / auto repeat;
 		position: relative;
 		left: 0;
 		width: 100%;
@@ -4470,7 +4493,7 @@ html, body{
 	@media screen and (max-width: 1280px) {
 
 		#footer {
-			background: linear-gradient(rgba(161, 175, 202, 0.637), rgba(161, 175, 202, 0.637/*light yellow-white - transparent*/)), url("images/blue_stripes.png") right top / auto repeat;
+			background: linear-gradient(rgba(161, 175, 202, 0.637), rgba(161, 175, 202, 0.637)), url("images/blue_stripes.png") right top / auto repeat;
 			background-size: auto, cover;
 			background-position: center, center;
 			margin-top: -3.5em;
@@ -4482,7 +4505,7 @@ html, body{
 	@media screen and (max-width: 980px) {
 
 		#footer {
-			background: linear-gradient(rgba(161, 175, 202, 0.637), rgba(161, 175, 202, 0.637/*light yellow-white - transparent*/)), url("images/blue_stripes.png") right top / auto repeat;
+			background: linear-gradient(rgba(161, 175, 202, 0.637), rgba(161, 175, 202, 0.637)), url("images/blue_stripes.png") right top / auto repeat;
 			background-size: auto, cover;
 			background-position: center, center;
 			margin-top: -4.75em;
@@ -4500,7 +4523,7 @@ html, body{
 	@media screen and (max-width: 736px) {
 
 		#footer {
-			background: linear-gradient(rgba(161, 175, 202, 0.637), rgba(161, 175, 202, 0.637/*light yellow-white - transparent*/)), url("images/blue_stripes.png") right top / auto repeat;
+			background: linear-gradient(rgba(161, 175, 202, 0.637), rgba(161, 175, 202, 0.637)), url("images/blue_stripes.png") right top / auto repeat;
 			margin-top: -2.5em;
 			padding-top: 3.5em;
 		}
@@ -4515,7 +4538,7 @@ html, body{
 
 	@media screen and (max-width: 360px) {
 		#footer {
-			background: linear-gradient(rgba(161, 175, 202, 0.637), rgba(161, 175, 202, 0.637/*light yellow-white - transparent*/)), url("images/blue_stripes.png") right top / auto repeat;
+			background: linear-gradient(rgba(161, 175, 202, 0.637), rgba(161, 175, 202, 0.637)), url("images/blue_stripes.png") right top / auto repeat;
 			margin-top: -2.5em;
 			padding-top: 3.5em;
 		}

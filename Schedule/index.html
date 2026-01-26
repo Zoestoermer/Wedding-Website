@@ -32,7 +32,7 @@
 							<img src="/images/Z_C_Favicon.png" alt="Logo" class="header-logo" />
 							
 							<p class="nav-links">
-								<a href="index.html">Home</a> &nbsp;&nbsp;&nbsp;
+								<a href="/index.html">Home</a> &nbsp;&nbsp;&nbsp;
 								<a href="/Travel/">Travel</a> &nbsp;&nbsp;&nbsp;
 								<a href="/Schedule/">Schedule</a> &nbsp;&nbsp;&nbsp;
 								<a href="/FAQs/">FAQs</a> &nbsp;&nbsp;&nbsp;
@@ -48,8 +48,8 @@
 						<div class="wrapper light">
 							<div class="content">
 								<div>
-									<h2 style="text-align: center; ">Weekend Schedule</h2>
-									<p style="max-width: 1000px;">
+									<h2 style="text-align: center;">Weekend Schedule</h2>
+									<p>
 										Yosemite is one of our favorite places and we want our favorite people to experience its beauty. We want this to be feel like a vacation, so please feel free to do whatever you'd like during non-wedding event times! We encorage everyone to take some extra time to explore the park! <!--Reword-->
 									</p>
 								</div>
@@ -72,7 +72,7 @@
 									<h2>Saturday, July 18th</h2>
 									<p style="text-align: center; padding: 0 10em;">
 										<strong>Free Time</strong></br>
-										We have nothing planned during the day, so please feel free to go on a hike, hang out by the pool, or to a quick trip to Yosemite
+										We have nothing planned during the day, so please feel free to go on a hike, hang out by the pool, or to a quick trip to Yosemite, but please consider travel time to and from Yosemite Valley.
 									</p>
 									<p style="text-align: center; padding: 0 10em;">
 										<strong>Ceremony</strong></br>
@@ -80,15 +80,16 @@
 									</p>
 									<p style="text-align: center; padding: 0 10em;">
 										<strong>Dinner, Toasts and Party!</strong></br>
-										7:00 PM - 10:00 PM </br>
-										Bring an empty stomach, a handkerchief, and put on your dancing shoes!
+										6:30 PM - 10:00 PM </br>
+										Bring an empty stomach, tissues, and put on your dancing shoes!
 									</p>
 									<hr class="wavy">
 								</div>
 								<div class="inner">
 									<h2>Sunday, July 19th</h2>
-									<p style="text-align: center; padding: 0 10em;">
-										Nothing planned, but we highly suggest you spend some time in the park! Colin and Zoe will be taking photos with their amazing photographer that day, but will also be sure to get a hike in, maybe some horeback riding. <!--Reword this, maybe add something about a group hike?-->
+									<p style="text-align: center;">
+										No formal events planned, but we highly encourage you to spend some time exploring the park! 
+										<br>Colin and Zoe will be taking photos in Yosemite Valley with their amazing photographer, and also hope to get in a hike and possibly some horseback riding. If you’ll be around, we’d love to show our guests around the beautiful Yosemite Valley!
 									</p>
 								</div>
 							</div>
@@ -98,14 +99,14 @@
 						<div class="wrapper light">
 							<div class="content">
 								<div>
-									<h2 style="text-align: center; ">Exploring Options in the Area:</h2>
 									<p style="max-width: 1000px;">
-										Yosemite (duh)<br>
+										Please see our travel page for exploring options in the area!
+										<!--Yosemite Village (duh)<br>
 										Downtown Midpines/ Mariposa<br>
 										Hike <br>
 										Horeseback riding<br>
 										Birdwatching (this one is for you Zach)<br>
-										Rock Climbing (I would love to see someone do this!)
+										Rock Climbing (I would love to see someone do this!)-->
 									</p>
 								</div>
 							</div>
@@ -168,158 +169,5 @@
 					});
 				});
 			</script>
-
-		<!--RSVP Form -->
-<script>
-/* ===============================
-   GLOBAL STATE
-================================ */
-let guestCount = 1;
-const maxGuests = 6;
-
-/* ===============================
-   MODAL CONTROLS
-================================ */
-function openForm() {
-  document.getElementById("formOverlay").style.display = "flex";
-  document.body.classList.add("no-scroll");
-}
-
-function closeForm(event) {
-  if (!event || event.target?.id === "formOverlay") {
-    document.getElementById("formOverlay").style.display = "none";
-    document.body.classList.remove("no-scroll");
-
-    document.getElementById("rsvpForm").style.display = "block";
-    document.getElementById("successMessage").style.display = "none";
-  }
-}
-
-/* ===============================
-   ATTENDANCE LOGIC
-================================ */
-function handleAttendanceChange() {
-  const attending = document.querySelector(
-    'input[name="responderAttending"]:checked'
-  )?.value;
-
-  const attendingSection = document.getElementById("attendingOnlySection");
-  const guestCountSection = document.getElementById("guestCountSection");
-  const sorryMessage = document.getElementById("sorryMessage");
-  const additionalGuests = document.getElementById("additionalGuests");
-
-  if (attending === "Yes") {
-    attendingSection.style.display = "block";
-    guestCountSection.style.display = "block";
-    sorryMessage.style.display = "none";
-    renderAdditionalGuests();
-  } else {
-    attendingSection.style.display = "none";
-    guestCountSection.style.display = "none";
-    sorryMessage.style.display = "block";
-
-    guestCount = 1;
-    document.getElementById("guestCount").textContent = "1";
-    document.getElementById("guestCountInput").value = "1";
-    additionalGuests.innerHTML = "";
-
-    document
-      .querySelectorAll('input[name="welcome_party"], input[name="movie"]')
-      .forEach(i => i.checked = false);
-  }
-}
-
-/* ===============================
-   GUEST COUNTER
-================================ */
-function changeGuestCount(amount) {
-  guestCount = Math.min(Math.max(1, guestCount + amount), maxGuests);
-  document.getElementById("guestCount").textContent = guestCount;
-  document.getElementById("guestCountInput").value = guestCount;
-  renderAdditionalGuests();
-}
-
-function renderAdditionalGuests() {
-  const container = document.getElementById("additionalGuests");
-  container.innerHTML = "";
-
-  for (let i = 2; i <= guestCount; i++) {
-    container.innerHTML += `
-      <div class="form-section">
-        <label class="section-label">Guest ${i} Name</label>
-        <div class="name-row">
-          <div class="field">
-            <input type="text" name="guest${i}FirstName">
-            <label class="floating-label">First Name</label>
-          </div>
-          <div class="field">
-            <input type="text" name="guest${i}LastName">
-            <label class="floating-label">Last Name</label>
-          </div>
-        </div>
-      </div>
-    `;
-  }
-}
-
-/* Collect guest names */
-function collectGuests(form) {
-  const guests = [
-    { first: form.responderFirstName.value, last: form.responderLastName.value }
-  ];
-
-  for (let i = 2; i <= guestCount; i++) {
-    guests.push({
-      first: form[`guest${i}FirstName`]?.value || "",
-      last: form[`guest${i}LastName`]?.value || ""
-    });
-  }
-
-  return guests;
-}
-
-
-/* ===============================
-   FORM SUBMIT (NO FETCH, NO CORS)
-================================ */
-document.addEventListener("DOMContentLoaded", function () {
-  const form = document.getElementById("rsvpForm");
-
-  form.addEventListener("submit", function () {
-    // Serialize guests into hidden field
-    let guests = [];
-    guests.push(
-      `${form.responderFirstName.value} ${form.responderLastName.value}`
-    );
-
-    for (let i = 2; i <= guestCount; i++) {
-      const first = form[`guest${i}FirstName`]?.value || "";
-      const last = form[`guest${i}LastName`]?.value || "";
-      if (first || last) guests.push(`${first} ${last}`);
-    }
-
-    // Create / update hidden input
-    let guestsInput = document.getElementById("guestsInput");
-    if (!guestsInput) {
-      guestsInput = document.createElement("input");
-      guestsInput.type = "hidden";
-      guestsInput.name = "guests";
-      guestsInput.id = "guestsInput";
-      form.appendChild(guestsInput);
-    }
-
-    guestsInput.value = guests.join(", ");
-
-    // Show success message (form posts in hidden iframe)
-    setTimeout(() => {
-      form.style.display = "none";
-      document.getElementById("successMessage").style.display = "block";
-    }, 400);
-  });
-});
-
-</script>
-
-			
 	</body>
 </html>

@@ -29,7 +29,7 @@
 						<div class="header-container">
 							<button class="menu-toggle">☰</button>
 
-							<img src="/images/Z_C_Favicon.png" alt="Logo" class="header-logo" />
+							<img src="images/Z_C_Favicon.png" alt="Logo" class="header-logo" />
 							
 							<p class="nav-links">
 								<a href="/index.html">Home</a> &nbsp;&nbsp;&nbsp;
@@ -39,8 +39,8 @@
 								<a href="/RSVP/" class="rsvp-link">RSVP</a>
         					</p>
 
-							<p><a href="/RSVP/" class="rsvp-button">RSVP</a></p>
-						</div>					
+							<p><a href="/RSVP/" class="rsvp-button">RSVP</a></p>							
+						</div>						
 					
 					</header>
 
@@ -51,7 +51,7 @@
 									<p style="max-width: 1000px;">
 										These dress codes and pictures are intended to serve as a guide to help you decide what to wear and take some stress away.
 										</br></br>
-										All events will be held outside, so please dress accordingly. It can get toasty in the mid day. Lastly, a heads up for shoes, the venue is grass and pea gravel.
+										All events will be held outside, so please dress accordingly. It can get up to 90°+  during the hottest parts of the day, and cool down into the 70°s in the evenings. Lastly, the venue is grass and pea gravel, so choose your shoes accordingly.
 									</p>
 								</div>
 							</div>
@@ -64,7 +64,7 @@
 									<p style="text-align: center; padding: 0 6em;">
 										Dress code: Your comfiest movie night attire
 										</br>
-										Think laying out in your comfiest PJs, watching your wifes/girl-friends/ sisters favorite rom-com, while hanging out with maybe a few people you know.
+										Think laying out in your comfiest PJs, watching your wife's/girlfriend's/mom's favorite rom-com, while hanging out with maybe a few people you like.
 									</p>
 									<img style="max-width: 900px; transform: none;" src="/images/Yosemite movie night.jpg">
 								</div>
@@ -74,18 +74,16 @@
 						<div class="wrapper striped">
 							<div class="content">
 								<div class="inner">
-									<h2 style="color: black;">Wedding Day</h2>
-									<p style="color: black;"> <!-- Is this hard to read?-->
+									<h2>Wedding Day</h2>
+									<p>
 										Dress code: Garden Party Semi-Formal Attire (ask a women in your life).
 										</br>
-										Think (insert colin's attire description) Think about how beautiful you are!
+										Translation from Colin: A button up (short or long sleeves) with slacks is the minimum. You are welcome to wear a jacket if you would like, however, they are not required. Please no jeans or shorts. Zoe has asked everyone to wear fun and colorful outfits (whatever that means), so maybe ask your wife/girlfriend/mom for help with that. 
 									</p>
-									<div class="gallery-grid5">
+									<div class="gallery-grid3">
 										<img src="/images/Womens attire/attire2.jpg">
 										<img src="/images/Womens attire/attire1.jpg">
 										<img src="/images/Womens attire/attire11.jpg">
-										<img src="/images/Womens attire/attire9.jpg">
-										<img src="/images/Womens attire/attire4.jpg">
 									</div>
 								</div>
 							</div>	
@@ -96,7 +94,7 @@
 								<div>
 									<h2 style="text-align: center; ">A note from the groom:</h2>
 									<p style="max-width: 1000px;">
-										Please do not take the dress code too seriously, as long as you feel beautiful, you are good to go :)
+										Zoe has also made it very clear to me that she does not want "any stupid golf polos". Sorry guys!
 									</p>
 									<h4 style="text-decoration: underline;"><a href="/Womens Attire/">View Womens Attire</a></h4>
 								</div>
@@ -159,159 +157,6 @@
 						toggle.setAttribute('aria-expanded', String(!expanded));
 					});
 				});
-			</script>
-
-		<!--RSVP Form -->
-<script>
-/* ===============================
-   GLOBAL STATE
-================================ */
-let guestCount = 1;
-const maxGuests = 6;
-
-/* ===============================
-   MODAL CONTROLS
-================================ */
-function openForm() {
-  document.getElementById("formOverlay").style.display = "flex";
-  document.body.classList.add("no-scroll");
-}
-
-function closeForm(event) {
-  if (!event || event.target?.id === "formOverlay") {
-    document.getElementById("formOverlay").style.display = "none";
-    document.body.classList.remove("no-scroll");
-
-    document.getElementById("rsvpForm").style.display = "block";
-    document.getElementById("successMessage").style.display = "none";
-  }
-}
-
-/* ===============================
-   ATTENDANCE LOGIC
-================================ */
-function handleAttendanceChange() {
-  const attending = document.querySelector(
-    'input[name="responderAttending"]:checked'
-  )?.value;
-
-  const attendingSection = document.getElementById("attendingOnlySection");
-  const guestCountSection = document.getElementById("guestCountSection");
-  const sorryMessage = document.getElementById("sorryMessage");
-  const additionalGuests = document.getElementById("additionalGuests");
-
-  if (attending === "Yes") {
-    attendingSection.style.display = "block";
-    guestCountSection.style.display = "block";
-    sorryMessage.style.display = "none";
-    renderAdditionalGuests();
-  } else {
-    attendingSection.style.display = "none";
-    guestCountSection.style.display = "none";
-    sorryMessage.style.display = "block";
-
-    guestCount = 1;
-    document.getElementById("guestCount").textContent = "1";
-    document.getElementById("guestCountInput").value = "1";
-    additionalGuests.innerHTML = "";
-
-    document
-      .querySelectorAll('input[name="welcome_party"], input[name="movie"]')
-      .forEach(i => i.checked = false);
-  }
-}
-
-/* ===============================
-   GUEST COUNTER
-================================ */
-function changeGuestCount(amount) {
-  guestCount = Math.min(Math.max(1, guestCount + amount), maxGuests);
-  document.getElementById("guestCount").textContent = guestCount;
-  document.getElementById("guestCountInput").value = guestCount;
-  renderAdditionalGuests();
-}
-
-function renderAdditionalGuests() {
-  const container = document.getElementById("additionalGuests");
-  container.innerHTML = "";
-
-  for (let i = 2; i <= guestCount; i++) {
-    container.innerHTML += `
-      <div class="form-section">
-        <label class="section-label">Guest ${i} Name</label>
-        <div class="name-row">
-          <div class="field">
-            <input type="text" name="guest${i}FirstName">
-            <label class="floating-label">First Name</label>
-          </div>
-          <div class="field">
-            <input type="text" name="guest${i}LastName">
-            <label class="floating-label">Last Name</label>
-          </div>
-        </div>
-      </div>
-    `;
-  }
-}
-
-/* Collect guest names */
-function collectGuests(form) {
-  const guests = [
-    { first: form.responderFirstName.value, last: form.responderLastName.value }
-  ];
-
-  for (let i = 2; i <= guestCount; i++) {
-    guests.push({
-      first: form[`guest${i}FirstName`]?.value || "",
-      last: form[`guest${i}LastName`]?.value || ""
-    });
-  }
-
-  return guests;
-}
-
-
-/* ===============================
-   FORM SUBMIT (NO FETCH, NO CORS)
-================================ */
-document.addEventListener("DOMContentLoaded", function () {
-  const form = document.getElementById("rsvpForm");
-
-  form.addEventListener("submit", function () {
-    // Serialize guests into hidden field
-    let guests = [];
-    guests.push(
-      `${form.responderFirstName.value} ${form.responderLastName.value}`
-    );
-
-    for (let i = 2; i <= guestCount; i++) {
-      const first = form[`guest${i}FirstName`]?.value || "";
-      const last = form[`guest${i}LastName`]?.value || "";
-      if (first || last) guests.push(`${first} ${last}`);
-    }
-
-    // Create / update hidden input
-    let guestsInput = document.getElementById("guestsInput");
-    if (!guestsInput) {
-      guestsInput = document.createElement("input");
-      guestsInput.type = "hidden";
-      guestsInput.name = "guests";
-      guestsInput.id = "guestsInput";
-      form.appendChild(guestsInput);
-    }
-
-    guestsInput.value = guests.join(", ");
-
-    // Show success message (form posts in hidden iframe)
-    setTimeout(() => {
-      form.style.display = "none";
-      document.getElementById("successMessage").style.display = "block";
-    }, 400);
-  });
-});
-
-</script>
-
-			
+			</script>			
 	</body>
 </html>
