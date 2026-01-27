@@ -2891,7 +2891,7 @@ html, body{
 			bottom: -12em;
 			left: 0;
 			width: 100%;
-			height: 12em; /* wave height */
+			height: 13em; /* wave height */
 			-webkit-mask: url("data:image/svg+xml;charset=utf8,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100' preserveAspectRatio='none'%3E%3Cpath d='M0 60 C 15 10, 30 90, 50 60 C 70 30, 85 90, 100 60 L100 105 L0 105 Z' /%3E%3C/svg%3E") right top / cover repeat;
 			-webkit-mask-repeat: repeat;
 			-webkit-mask-size: cover;
@@ -3047,7 +3047,7 @@ html, body{
 			inset: 0;                           
 			width: 100%;
 			height: 100%;
-			padding: 5rem 1rem;
+			padding: 7rem 1rem;
 			gap: .2rem;
 			z-index: 10000;  /* under the hamburger (10001) */
 			background: linear-gradient(rgba(161, 175, 202, 0.637), rgba(161, 175, 202, 0.637)), url("images/blue_stripes.png") right top / auto repeat;
@@ -3057,7 +3057,7 @@ html, body{
 		body.nav-open .nav-links a {
 			display: block;
 			margin: 0;
-			padding: 2rem 1rem;
+			padding: 1.5rem 1rem 1.3rem;
 			font-size: 1.4rem;
 			color: #2d3a69;
 			text-decoration: none;
@@ -3096,11 +3096,13 @@ html, body{
 		body.nav-open .nav-links a.rsvp-link {
 			display: block;
 			margin: 0;
-			padding: 0.4rem 1rem;
 			font-size: 1.4rem;
-			color: #2d3a69;        /* same color as nav text */
+			color: #2d3a69; 
 			text-decoration: none;
 			text-align: center;
+		}
+		 body.nav-open .wrapper.striped {
+			display: none;
 		}
 	}
 
@@ -3189,6 +3191,16 @@ html, body{
 					font-size: 1em;
 				}
 
+		}
+
+		@media screen and (max-width: 736px) {
+			#countdown span {
+				display: block;   /* forces new line */
+			}
+
+			#countdown .time {
+				margin-top: 0.5em;
+			}
 		}
 
 		body.is-preload #banner .logo {
@@ -3434,26 +3446,46 @@ html, body{
 				background-clip: content-box;
 			}
 
-			@media (min-width: 1300px) {
+			@media (max-width: 1300px) {
 				.wrapper.striped::before {
 					top: -16em;
 					height: 18em;
 				}
 			}
 
-			@media (min-width: 900px) {
+			@media (max-width: 980px) {
 				.wrapper.striped img {
-					max-width: 65%;
+					max-width: 85%;
+					max-height: auto;
 				}
 				.wrapper.striped::before {
-					top: -15em;
-					height: 16em;
+					top: -11em;
+					height: 14em;
+				}
+				.wrapper.striped h1 {
+					font-size: 4rem;
+					padding: 0 4em 0 0;
 				}
 			}
 
-			@media (min-width: 600px) {
+			@media (max-width: 736px) {
 				.wrapper.striped img {
-					max-width: 85%;
+					max-width: 98%;
+					max-height: auto;
+				}
+				.wrapper.striped::before {
+					top: -8em;
+					height: 10em;
+				}
+				.wrapper.striped h1 {
+					font-size: 3rem;
+					padding: 0 5em .25em 0;
+				}
+			}
+
+			@media (max-width: 600px) {
+				.wrapper.striped img {
+					max-width: 95%;
 				}
 				.wrapper.striped::before {
 					top: -13em;
@@ -3467,21 +3499,32 @@ html, body{
 					height: 10em;
 				}
 			}
+			@media (max-width: 320px) {
+				.wrapper.striped::before {
+					top: -7em;
+					height: 8em;
+				}
+				.wrapper.striped h1 {
+					font-size: 2.7rem;
+					padding: 0 5em .25em 0;
+				}
+			}
 
 
 		.wrapper.light {
 			background-color: rgb(247, 241, 231); 
-			padding: 3em 5em 0 5em;
+			padding: 2em 5em;
 			display: flex; 
 			flex-direction: column;
-			align-items: center;  
-			justify-content: center; 
+			align-items: stretch;  
 		}
 
 			.wrapper.light h4, .wrapper.light p{
 				color: black;
 				text-align: center;
-				padding: 0 2em;
+				max-width: 1000px;
+				margin-inline: auto;
+				padding: 2em 1em;
 			}
 
 			.wrapper.light h2{
@@ -3548,6 +3591,10 @@ html, body{
 				background-clip: content-box;
 			}
 
+			.schedule-page .wrapper.light p{
+				padding-top: 5em !important;
+			}
+
 			@media (max-width: 1500px) {
 				.wrapper.light:after {
 					bottom: -19em;
@@ -3567,23 +3614,42 @@ html, body{
 					bottom: -13em;
 					height: 12em;
 				}
+				
 			}
 
-			@media (max-width: 700px) {
+			@media (max-width: 736px) {
 				.wrapper.light:after {
 					bottom: -11em;
 					height: 10em;
 				}
-				.wrapper.light h4, .wrapper.light p, .wrapper.light h2{
-					padding: 1em 0.25em;
+				.wrapper.light h4, .wrapper.light p{
+					padding: 0 1em;
+					max-width: none;
+					width: 100%;
+				}
+				.wrapper.light h2{
+					padding: 2.5em 0.25em 0 0;
+					max-width: none;
+					width: 100%;
+				}
+				.wrapper.light {
+					padding: 0.5em;
 				}
 			}
 
 			@media (max-width: 599px) {
-				.wrapper.light h4, .wrapper.light p, .wrapper.light h2{
-					padding: 1em 0.25em;
+				.wrapper.light h4, .wrapper.light p {
+					max-width: none;
+					width: 100%;
+				}
+				.wrapper.light h2{
+					padding: 2.5em 0.25em 0 0;
+					max-width: none;
+					width: 100%;
 				}
 			}
+
+			
 
 		.wrapper.solid {
 			background-color: #798db9; 
@@ -3592,6 +3658,15 @@ html, body{
 			padding: 5em 0 1em 0;
 			position: relative;
 		}
+
+			.wrapper.solid .content {
+				width: 100%;
+				max-width: 1100px;
+				margin: 0 auto;
+				display: flex;
+				flex-direction: column;
+				align-items: center;
+			}
 
 			.wrapper.solid h2{
 				color: rgb(255, 255, 255) !important;
@@ -3602,8 +3677,9 @@ html, body{
 			.wrapper.solid p{
 				color: rgb(255, 255, 255) !important;
 				text-align: center;
-				padding: 0 2em;
+				padding: 0 4em;
 				max-width: 1000px;
+				margin: 0 auto 1.5em; 
 			}
 
 			.wrapper.solid h4{
@@ -3620,10 +3696,11 @@ html, body{
 				border-radius: 18%;
 				display: block;
 				margin: 0 auto;
-				max-width: 100%;
-				max-height: 100vh;
+				max-width: 700px;
+				width: 100%;
+				height: auto;
 				object-fit: contain; 
-				padding: 0 4em 1em 4em;
+				padding: 0 clamp(1em, 4vw, 4em) 1em;
 				transition: transform .2s; /* Animation */
 				border-radius: 15%;
 			}
@@ -3633,7 +3710,7 @@ html, body{
 			}
 
 			.wrapper.solid > div {
-				flex: 1 !important; /* let them share the row space */
+				flex: 1 !important; 
 			}
 
 			.wrapper.solid:after {
@@ -3654,6 +3731,58 @@ html, body{
 				background-origin: border-box;
 				background-clip: content-box;
 			}
+
+			.schedule-page .wrapper.solid::after {
+				z-index: 12;
+			}
+
+			@media (max-width: 1500px) {
+				.wrapper.solid:after {
+					height: 19em;
+					bottom: -19em;
+				}
+			}
+
+			@media (max-width: 1200px) {
+				.wrapper.solid:after {
+					height: 16em;
+					bottom: -16em;
+				}
+			}
+
+			@media (max-width: 900px) {
+				.wrapper.solid:after {
+					height: 14em;
+					bottom: -13em;
+				}
+			}
+
+			@media (max-width: 736px) {
+				.wrapper.solid:after {
+					height: 12em;
+					bottom: -11em;
+					flex-direction: column !important;
+				}
+				.wrapper.solid img {
+					padding: 1em 1em;
+					max-width: 90%;
+				}
+			}
+
+			@media (max-width: 600px) {
+				.wrapper.solid:after {
+					height: 11em;
+					bottom: -10em;
+				}
+			}
+
+			@media (max-width: 425px) {
+				.wrapper.solid:after {
+					height: 8em;
+					bottom: -8em;
+				}
+			}
+
 
 			.gallery-grid5 {
 				display: grid;
@@ -3677,19 +3806,27 @@ html, body{
 
 				@media (max-width: 900px) {
 					.gallery-grid5 {
-						grid-template-columns: repeat(2, 1fr); /* 2 across */
-						max-width: 800px;
+						grid-template-columns: repeat(5, 1fr); /* 2 across */
+						max-width: 900px;
+					}
+					.wrapper.solid p {
+						padding: 0 2em;
 					}
 				}
 
 				@media (max-width: 600px) {
 					.gallery-grid5 {
-						grid-template-columns: 1fr; /* 1 across */
+						grid-template-columns: repeat(3, 1fr); /* 2 across */
 						max-width: 90%;
+						gap: 1em;
 					}
 
 					.wrapper.striped .gallery-grid5 img{
 						max-width: 100%;
+					}
+
+					.wrapper.solid p {
+						padding: 0 1.25em;
 					}
 				}
 
@@ -3728,8 +3865,8 @@ html, body{
 
 				@media (max-width: 900px) {
 					.gallery-grid3 {
-						grid-template-columns: repeat(2, 1fr); /* 2 across */
-						max-width: 800px;
+						grid-template-columns: 1fr; /* 1 across */
+						max-width: 600px;
 					}
 				}
 
@@ -3757,15 +3894,16 @@ html, body{
 			}
 				
 				.wrapper.solid .gallery-grid2 img {
-					max-width: none;
+					width: 100%;
+					max-width: 100%;
 					height: auto;
-					object-fit: cover;     
+					object-fit: cover;
 					border-radius: 20%;
 					display: block;
 					justify-content: center;
 				}
 
-				@media (max-width: 600px) {
+				@media (max-width: 980px) {
 					.gallery-grid2 {
 						grid-template-columns: 1fr; /* 1 across */
 						max-width: 98%;
@@ -3989,10 +4127,10 @@ html, body{
 
 		@media screen and (max-width: 480px) {
 			.diagonal-image {
-				width: 80px;
-				max-height: 80%;
+				width: 75px;
+				max-height: 75%;
 				top: 70%;  
-				right: 5%;
+				right: 2%;
 			}
 		}
 
