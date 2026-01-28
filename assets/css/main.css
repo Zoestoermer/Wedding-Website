@@ -4740,3 +4740,17 @@ html, body{
 		}
 
 	}
+
+	 .qr-container {
+		display: flex;
+		justify-content: center; 
+		align-items: center;    
+		height: 100%;
+		flex-direction: column;  
+	}
+
+	.qr-container img {
+		width: 400px;  
+		height: 400px;
+		border-radius: 10px;   
+	}

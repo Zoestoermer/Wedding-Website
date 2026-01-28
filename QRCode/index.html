@@ -1,0 +1,59 @@
+<!DOCTYPE HTML>
+<!--
+	Solid State by HTML5 UP
+	html5up.net | @ajlkn
+	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
+-->
+<html lang="en">
+	<head>
+		<title>QR Code</title>
+		<!-- Favicon -->
+		<link rel="icon" type="image/png" href="/images/Z_C_Favicon.png">
+		<link rel="shortcut icon" href="/images/Z_C_Favicon.png" type="image/png">
+		<link rel="apple-touch-icon" href="/assets/images/Z_C_Favicon.png">
+
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+
+		<!-- CSS -->
+		<link rel="stylesheet" href="/assets/css/main.css" />
+		<noscript><link rel="stylesheet" href="/assets/css/noscript.css" /></noscript>
+	</head>
+	<body class="is-preload">
+
+		<!-- Page Wrapper -->
+			<div id="page-wrapper">
+
+				<body>
+
+					<div class="qr-container">
+						<h2>Scan to visit our website:</h2>
+						<div id="qrcode"></div>
+					</div>
+
+				
+
+				</body>
+	
+			</div>
+
+		<!-- Scripts -->
+			<script src="/assets/js/jquery.min.js"></script>
+			<script src="/assets/js/jquery.scrollex.min.js"></script>
+			<script src="/assets/js/browser.min.js"></script>
+			<script src="/assets/js/breakpoints.min.js"></script>
+			<script src="/assets/js/util.js"></script>
+			<script src="/assets/js/main.js"></script>
+		<!-- Include the QRCode.js library -->
+			<script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
+			<script>
+				var qrcode = new QRCode(document.getElementById("qrcode"), {
+					text: "https://colinandzoe.com",
+					width: 200,
+					height: 200,
+					colorDark: "#000000",
+					colorLight: "#ffffff",
+				});
+			</script>
+	</body>
+</html>
