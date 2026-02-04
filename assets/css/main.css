@@ -2252,10 +2252,46 @@ html, body{
 		list-style: disc;
 		padding-left: 1em;
 	}
+		.ulTravel {
+			padding-left: 6em;
+		}
 
-		@media screen and (max-width: 700px) {
-			ul{
-				padding: 0;
+		.ulTravelCircle{
+			padding-left: 2em;
+		}
+
+		.ulTravelCircle li{
+			list-style-type: circle;
+		}
+
+		.ulTravelCircle ol li{
+			list-style-type: decimal;
+		}
+
+		.ulTravelCircle ol ul li{
+			list-style-type: square;
+		}
+
+
+		.ulTravelSqr{
+			padding-left: 2em;
+		}
+
+		.ulTravelSqr li{
+			list-style-type: square;
+		}
+
+		@media screen and (max-width: 900px) {
+			.ulTravel{
+				padding-left: 1em;
+			}
+
+			.ulTravelCircle{
+				padding-left: 1.2em;
+			}
+
+			.ulTravelSqr{
+				padding-left: 1.2em;
 			}
 		}
 
