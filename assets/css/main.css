@@ -3442,7 +3442,8 @@ html, body{
 
 			@media (max-width: 600px) {
 				.wrapper.striped .background {
-					margin: auto 1.25em ;
+					margin: auto 2em ;
+					padding: 1em .5em;
 				}
 			}
 
