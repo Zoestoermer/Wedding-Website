@@ -15,6 +15,7 @@
 		<link rel="stylesheet" href="assets/css/main.css" />
 		<noscript><link rel="stylesheet" href="assets/css/noscript.css" /></noscript>
 	</head>
+
 	<body class="is-preload">
 
 		<!-- Page Wrapper -->
@@ -28,7 +29,7 @@
 							<img src="images/Z_C_Favicon.png" alt="Logo" class="header-logo" />
 							
 							<p class="nav-links">
-								<a href="/index.html">Home</a> &nbsp;&nbsp;&nbsp;
+								<a>Home</a> &nbsp;&nbsp;&nbsp;
 								<a href="/Schedule/">Schedule</a> &nbsp;&nbsp;&nbsp;
 								<a href="/Travel/">Travel</a> &nbsp;&nbsp;&nbsp;
 								<a href="/FAQs/">FAQs</a> &nbsp;&nbsp;&nbsp;
@@ -198,5 +199,83 @@
 				}
 				}, 1000);
 			</script>
+
+			
+	<!--REMOVE THIS ONCE ROOM BLOCK IS FIGURED OUT-->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Popup Trigger</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+  <!-- Popup Overlay -->
+	<div id="popupOverlay" class="overlay">
+		<div class="popup">
+			<span class="close-btn">&times;</span>
+			<h2>Read me!</h2>
+			<p>For our guests wanting to stay at AutoCamp Yosemite, our discounted room block has already filled up (wow so many people love us!) but don't panic! We are working to get more rooms added here in the next couple of days. Please check back later, or reach out to Zoe or Colin for updates. </p>
+		</div>
+	</div>
+
+  <script>
+	document.addEventListener("DOMContentLoaded", function () {
+
+  const overlay = document.getElementById("popupOverlay");
+  const popup = document.querySelector(".popup");
+  const closeBtn = document.querySelector(".close-btn");
+
+  let popupShown = false;
+
+  function showPopup() {
+    if (!popupShown) {
+      overlay.style.display = "flex";
+      popupShown = true;
+
+      // Remove listeners after showing once
+      window.removeEventListener("scroll", handleScroll);
+      window.removeEventListener("click", handleClick);
+    }
+  }
+
+  function handleScroll() {
+    if (window.scrollY > 450) {
+      showPopup();
+    }
+  }
+
+  function handleClick(e) {
+    if (!popup.contains(e.target)) {
+      showPopup();
+    }
+  }
+
+  // Trigger events
+  window.addEventListener("scroll", handleScroll);
+  window.addEventListener("click", handleClick);
+
+  // Close button
+  closeBtn.addEventListener("click", function (e) {
+    e.stopPropagation();
+    overlay.style.display = "none";
+  });
+
+  // Close when clicking outside popup
+  overlay.addEventListener("click", function (e) {
+    if (!popup.contains(e.target)) {
+      overlay.style.display = "none";
+    }
+  });
+
+});
+  </script>
+</body>
+</html>
+
+
+
 	</body>
 </html>
+
